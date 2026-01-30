@@ -27,7 +27,7 @@
 <ul>
   <li><strong>HTML</strong></li>
   <li><strong>CSS</strong> – split across multiple <code>.css</code> files</li>
-  <li><strong>JavaScript</strong></li>
+  <li><strong>JavaScript</strong> – split across multiple <code>.js</code> files</li>
 </ul>
 
 <h2>📁 Project Structure & Assets</h2>
@@ -40,6 +40,8 @@
   <li><code>img</code> – images of dishes and UI elements</li>
   <li><code>fonts</code> – font files</li>
   <li><code>icon</code> – app icons and symbols</li>
+  <li><code>scripts</code> – JavaScript files</li>
+  <li><code>styles</code> – CSS files</li>
 </ul>
 
 <p>
