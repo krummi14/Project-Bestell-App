@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-family: 'Palanquin', sans-serif;
+}
+
+main {
+    flex-grow: 1;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+h1 {
+    font-family: 'Palanquin Dark', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+}
