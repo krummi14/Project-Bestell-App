@@ -137,6 +137,12 @@ header {
     font-weight: bold;
 }
 
+.pizza_diameter {
+    font-size: 40px;
+    color: white;
+    margin-left: 120px;
+}
+
 /* style of footer */
 footer {
     display: flex;

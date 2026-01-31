@@ -35,9 +35,21 @@
     height: 94px;
 }
 
-.burger_dish_img {  
+.dish_img {  
     object-fit: cover;
     height: 120px;
     width: 200px;
     border-radius: 12px;
+}
+
+.dish_img_position_5 {
+    object-position: left;
+}
+
+.dish_img_position_6 {
+    object-position: top;
+}
+
+.dish_img_position_7 {
+    object-position: right;
 }
