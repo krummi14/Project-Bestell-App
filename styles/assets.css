@@ -28,3 +28,16 @@
     border-radius: 100%;
     border: solid 12px rgb(253, 234, 220);
 }
+
+.dish_icon {
+    position: absolute;
+    width: 88px;
+    height: 94px;
+}
+
+.burger_dish_img {  
+    object-fit: cover;
+    height: 120px;
+    width: 200px;
+    border-radius: 12px;
+}

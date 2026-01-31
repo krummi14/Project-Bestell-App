@@ -5,14 +5,14 @@ header {
     justify-content: space-between;
     height: 128px;
     background-color: rgba(231, 108, 31, 1);
+    padding-left: 80px;
+    padding-right: 32px;
 }
 
 .header_maxWidth {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 80px;
-    padding-right: 32px;
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
@@ -26,7 +26,7 @@ header {
 /* end of header-style */
 
 /* style of hero section */
-.hero_section {
+.hero {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -85,7 +85,57 @@ header {
 .reviewer {
     font-size: 20px;
 }
+
 /* end of hero section*/
+
+/* style of Burger and Sandwiches */
+.dish_headline {
+    position: relative;
+    background-color: rgba(231, 108, 31, 1);
+    padding-left: 80px;
+    padding-right: 32px;
+}
+
+.dishes_maxWidth {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.dish_content_maxWidth {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.dish_content {
+    padding-left: 80px;
+    padding-right: 32px;
+}
+
+.dish_img_and_description {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.dish {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    background-color: rgba(253, 234, 220, 1);
+    border-radius: 12px;
+    padding: 8px;
+    margin: 32px 0;
+}
+
+.dish_price {
+    font-size: 24px;
+    font-weight: bold;
+}
 
 /* style of footer */
 footer {

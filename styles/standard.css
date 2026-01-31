@@ -29,3 +29,15 @@ h1 {
     font-size: 48px;
     font-weight: bold;
 }
+
+h2 {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    margin-left: 120px;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
