@@ -88,12 +88,73 @@ header {
 
 /* end of hero section*/
 
-/* style of Burger and Sandwiches */
+/* style of dish_content_wrapper */
+.dish_content_wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.allDishes_content {
+    width: calc(100% - 300px);
+}
+
+.basket_wrapper {
+    width: 420px;
+    position: relative 
+}
+
+.basket {
+    width: 100%;
+    height: 800px;
+    background-color: rgba(54, 53, 52, 1);
+    position: sticky;
+    top: 0;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+/* end of dish_content_wrapper */
+
+/* style of basket */
+.basket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    color: rgba(253, 234, 220, 1);
+    width: 100%; 
+    padding-left: 24px;
+    padding-right: 56px;
+    margin: 24px 0;
+}
+
+.text_left {
+    text-align: left;
+}
+
+.text_right {
+    text-align: right;
+}
+
+.table_border_top > th{
+    border-top: 5px solid rgba(253, 234, 220, 1);
+    padding-top: 8px;
+}
+
+.table_padding_bottom > td {
+    padding-bottom: 8px;
+}
+
+/* style of dish content */
 .dish_headline {
     position: relative;
     background-color: rgba(231, 108, 31, 1);
     padding-left: 80px;
     padding-right: 32px;
+    width: 100%;
 }
 
 .dishes_maxWidth {
@@ -121,6 +182,10 @@ header {
     gap: 8px;
 }
 
+.dish_recipe {
+    width: 60%;
+}
+
 .dish {
     display: flex;
     flex-direction: row;
@@ -137,11 +202,20 @@ header {
     font-weight: bold;
 }
 
+.dish_price_and_addButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
 .pizza_diameter {
     font-size: 40px;
     color: white;
     margin-left: 120px;
 }
+
+/* end of dish content */
 
 /* style of footer */
 footer {

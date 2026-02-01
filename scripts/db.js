@@ -23,7 +23,7 @@ let myDishes = [
     {
         "name": "Big chicken burger",
         "price": "15.90",
-        "description": "smit 300g Crispychickenfillet, Homemade Burger Buns, Homemade Burger Souce, frischen Tomaten und Blattsalat",
+        "description": "mit 300g Crispychickenfillet, Homemade Burger Buns, Homemade Burger Souce, frischen Tomaten und Blattsalat",
         "amount": "0",
         "img": "./assets/img/chicken burger.jpg",
     },
