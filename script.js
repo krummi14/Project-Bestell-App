@@ -34,3 +34,8 @@ function renderSalad() {
         contentBurger.innerHTML += getSaladDishTemplate(saladIndex);
     }
 }
+
+function addDish() {
+    let contentOrder = document.getElementById('order_content');
+    contentOrder.innerHTML = getOrderDishTemplate();
+}

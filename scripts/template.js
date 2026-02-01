@@ -9,7 +9,7 @@ function getBurgerDishTemplate(burgerIndex) {
                 </figure>
                 <div class="dish_price_and_addButton">
                     <p class="dish_price">${myDishes[burgerIndex].price}€</p>
-                    <button class="add_order_button">Add to basket</button>
+                    <button onclick="addDish()" class="add_order_button">Add to basket</button>
                 </div>
             </article>`;
 }
@@ -46,4 +46,7 @@ function getSaladDishTemplate(saladIndex) {
             </article>`;
 }
 
+function getOrderDishTemplate() {
+    return `<p>${myDishes[0].amount} x ${myDishes[0].name}</p>`
+}
 console.log(myDishes);
