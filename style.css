@@ -1,5 +1,14 @@
 /* style of header */
-header {
+.header_logo_and_menu_maxWidth {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.header_logo_and_menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -7,15 +16,6 @@ header {
     background-color: rgba(231, 108, 31, 1);
     padding-left: 80px;
     padding-right: 32px;
-}
-
-.header_maxWidth {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
 }
 
 .burger_menu {
@@ -90,28 +90,23 @@ header {
 
 /* style of dish_content_wrapper */
 .dish_content_wrapper {
-    display: flex;
-    flex-direction: row;
+    position: relative;
 }
 
-.allDishes_content {
-    width: calc(100% - 300px);
-}
+.allDishes_content {}
 
 .basket_wrapper {
+    height: 100%;
     width: 420px;
-    position: relative 
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
-.basket {
-    width: 100%;
-    height: 800px;
-    background-color: rgba(54, 53, 52, 1);
-    position: sticky;
-    top: 0;
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
+.dish_content_width {
+    width: 880px;
 }
+
 /* end of dish_content_wrapper */
 
 /* style of basket */
@@ -119,13 +114,21 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: sticky;
+    width: 100%;
+    height: 800px;
+    background-color: rgba(54, 53, 52, 1);
+    top: 0;
+    right: 0;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
 }
 
 table {
     border-collapse: separate;
     border-spacing: 0;
     color: rgba(253, 234, 220, 1);
-    width: 100%; 
+    width: 100%;
     padding-left: 24px;
     padding-right: 56px;
     margin: 24px 0;
@@ -139,12 +142,12 @@ table {
     text-align: right;
 }
 
-.table_border_top > th{
+.table_border_top>th {
     border-top: 5px solid rgba(253, 234, 220, 1);
     padding-top: 8px;
 }
 
-.table_padding_bottom > td {
+.table_padding_bottom>td {
     padding-bottom: 8px;
 }
 
@@ -167,18 +170,16 @@ table {
 }
 
 .dish_content_maxWidth {
-    max-width: 1440px;
-    margin: 0 auto;
-}
-
-.dish_content {
     padding-left: 80px;
     padding-right: 32px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .dish_img_and_description {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 8px;
 }
 
@@ -206,13 +207,13 @@ table {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 40px;
 }
 
 .pizza_diameter {
     font-size: 40px;
     color: white;
-    margin-left: 120px;
+    margin-left: 40px;
 }
 
 /* end of dish content */
@@ -223,7 +224,6 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    height: 128px;
     background-color: rgba(231, 108, 31, 1);
 }
 
@@ -233,6 +233,7 @@ footer {
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
+    height: 128px;
     max-width: 1440px;
     margin: 0 auto;
 }

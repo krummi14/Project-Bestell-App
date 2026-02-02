@@ -21,15 +21,15 @@
 <body onload="init()">
 
     <header>
-        <div class="header_maxWidth">
-            <img class="logo_img" src="./assets/icon/Logo_app.png" alt="Logo of Bestell App">
-            <button class="burger_menu_button">
-                <a href="#home" class="burger_menu">|||</a>
-            </button>
-        </div>
-    </header>
 
-    <main>
+        <section class="header_logo_and_menu">
+            <span class="header_logo_and_menu_maxWidth">
+                <img class="logo_img" src="./assets/icon/Logo_app.png" alt="Logo of Bestell App">
+                <button class="burger_menu_button">
+                    <a href="#home" class="burger_menu">|||</a>
+                </button>
+            </span>
+        </section>
         <section id="home" class="hero">
             <img class="hero_background_img" src="./assets/img/hero_bg.jpg" alt="Heroimage">
             <figure>
@@ -51,56 +51,62 @@
             </figure>
         </section>
 
-        <div class="dish_content_wrapper">
+    </header>
 
+    <main>
+
+        <div class="dish_content_wrapper">
             <section class="allDishes_content">
-                <section class="dish_headline">
+
+                <div class="dish_headline">
                     <span class="dishes_maxWidth">
                         <img class="dish_icon" src="./assets/icon/burger_icon.png" alt="Icon of Burger">
                         <h2>Burger & Sandwiches</h2>
                     </span>
-                </section>
+                </div>
 
-                <section class="dish_content">
+                <span class="dish_content">
                     <div class="dish_content_maxWidth">
-                        <div id="burger_content">
+                        <div id="burger_content" class="dish_content_width">
 
                         </div>
                     </div>
-                </section>
+                </span>
 
-                <section class="dish_headline">
+                <div class="dish_headline">
                     <span class="dishes_maxWidth">
                         <img class="dish_icon" src="./assets/icon/pizza_icon.png" alt="Icon of Pizza">
                         <h2>Pizza</h2>
                         <p class="pizza_diameter">(30cm)</p>
                     </span>
-                </section>
+                </div>
 
-                <section class="dish_content">
+                <span class="dish_content">
                     <div class="dish_content_maxWidth">
-                        <div id="pizza_content">
+                        <div id="pizza_content" class="dish_content_width">
 
                         </div>
                     </div>
-                </section>
+                </span>
 
-                <section class="dish_headline">
+                <div class="dish_headline">
                     <span class="dishes_maxWidth">
                         <img class="dish_icon" src="./assets/icon/salad_icon.png" alt="Icon of Salad">
                         <h2>Salad</h2>
                     </span>
-                </section>
+                </div>
 
-                <section class="dish_content">
+                <span class="dish_content">
                     <div class="dish_content_maxWidth">
-                        <div id="salad_content">
+                        <div id="salad_content" class="dish_content_width">
 
                         </div>
                     </div>
-                </section>
+                </span>
             </section>
+
             <section class="basket_wrapper">
+
                 <div class="basket">
                     <h3>Your Basket</h3>
                     <span id="order_content">
@@ -120,11 +126,12 @@
                             <th class="text_right">Summe€</th>
                         </tr>
                     </table>
-
                     <button class="order_button">Buy now (Summe€)</button>
                 </div>
             </section>
+
         </div>
+
     </main>
 
     <footer>
