@@ -35,7 +35,8 @@ function renderSalad() {
     }
 }
 
-function addDish() {
+function addDish(orderIndex) {
     let contentOrder = document.getElementById('order_content');
-    contentOrder.innerHTML = getOrderDishTemplate();
+    contentOrder.innerHTML += getOrderDishTemplate(orderIndex);
 }
+
