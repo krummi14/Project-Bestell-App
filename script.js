@@ -2,9 +2,6 @@ let contentBurger = document.getElementById('burger_content');
 let contentPizza = document.getElementById('pizza_content');
 let contentSalad = document.getElementById('salad_content');
 let contentBasket = document.getElementById('basket_content');
-let contentDishPrice = document.getElementById('dish_price');
-let contentTotalPrice = document.getElementById('total_price');
-let contentTableTotalPrice = document.getElementById('total_table_price');
 
 function init() {
     renderDishes();
@@ -47,8 +44,22 @@ function addBasket() {
 
 function addDish(orderIndex) {
     let contentOrder = document.getElementById('order_content');
-    contentOrder.innerHTML += getOrderDishTemplate(orderIndex);
+    if (myDishes[orderIndex].amount == 0) {
+        contentOrder.innerHTML += getOrderDishTemplate(orderIndex);
+    }
+
     calculateDishPrice(orderIndex);
+    calculateAmount(orderIndex);
+
+}
+
+function calculateAmount(orderIndex) {
+    let contentAmount = document.getElementById(`dish_amount_${orderIndex}`);
+    let contentOrderedDishAmount = document.getElementById(`ordered_dish_amount_${orderIndex}`);
+
+    myDishes[orderIndex].amount++;
+    contentAmount.innerText = myDishes[orderIndex].amount;
+    contentOrderedDishAmount.innerText = `${myDishes[orderIndex].amount} x ${myDishes[orderIndex].name}`;
 }
 
 function formatPrice(price) {
