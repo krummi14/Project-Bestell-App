@@ -93,20 +93,6 @@
     position: relative;
 }
 
-.allDishes_content {}
-
-.basket_wrapper {
-    height: 100%;
-    width: 420px;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.dish_content_width {
-    width: 880px;
-}
-
 /* end of dish_content_wrapper */
 
 /* style of basket */
@@ -122,6 +108,44 @@
     right: 0;
     border-top-left-radius: 16px;
     border-bottom-left-radius: 16px;
+}
+
+.basket_wrapper {
+    height: 100%;
+    width: 420px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.order_content_pad {
+    padding-left: 24px;
+    padding-right: 56px;
+}
+
+.render_amount {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.render_amount_and_price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ordered_dish_content {
+    background-color: rgba(253, 234, 220, 1);
+    border-radius: 20px;
+    border: none;
+    width: 320px;
+    padding: 16px;
+}
+
+.dish_font {
+    font-size: 22px;
+    font-weight: bold;
 }
 
 table {
@@ -198,9 +222,8 @@ table {
     margin: 32px 0;
 }
 
-.dish_price {
-    font-size: 24px;
-    font-weight: bold;
+.dish_content_width {
+    width: 800px;
 }
 
 .dish_price_and_addButton {

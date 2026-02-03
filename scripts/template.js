@@ -8,7 +8,7 @@ function getBurgerDishTemplate(burgerIndex) {
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">
-                    <p class="dish_price">${myDishes[burgerIndex].price}€</p>
+                    <h4>${myDishes[burgerIndex].price}€</h4>
                     <button onclick="addDish()" class="add_order_button">Add to basket</button>
                 </div>
             </article>`;
@@ -24,7 +24,7 @@ function getPizzaDishTemplate(pizzaIndex) {
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">
-                    <p class="dish_price">${myDishes[pizzaIndex].price}€</p>
+                    <h4>${myDishes[pizzaIndex].price}€</h4>
                     <button class="add_order_button">Add to basket</button>
                 </div>
             </article>`;
@@ -40,13 +40,23 @@ function getSaladDishTemplate(saladIndex) {
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">
-                    <p class="dish_price">${myDishes[saladIndex].price}€</p>
+                    <h4>${myDishes[saladIndex].price}€</h4>
                     <button class="add_order_button">Add to basket</button>
                 </div>
             </article>`;
 }
 
 function getOrderDishTemplate() {
-    return `<p>${myDishes[0].amount} x ${myDishes[0].name}</p>`
+    return `<div class="ordered_dish_content">
+                <h4 class="dish_font">${myDishes[0].amount} x ${myDishes[0].name}</h4>
+                <span class="render_amount_and_price">
+                    <div class="render_amount">
+                        <p class="dish_font">&#x1F5D1</p>
+                        <p class="dish_font">${myDishes[0].amount}</p>
+                        <p class="dish_font">+</p>
+                    </div>
+                    <p class="dish_font">${myDishes[0].price}€</p>
+                </span>
+            </div>`
 }
 console.log(myDishes);
