@@ -8,7 +8,7 @@ function getBurgerDishTemplate(burgerIndex) {
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">
-                    <h4>${myDishes[burgerIndex].price}€</h4>
+                    <h4>${formatPrice(myDishes[burgerIndex].price)}</h4>
                     <button onclick="addDish(${burgerIndex})" class="add_order_button">Add to basket</button>
                 </div>
             </article>`;
@@ -24,7 +24,7 @@ function getPizzaDishTemplate(pizzaIndex) {
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">
-                    <h4>${myDishes[pizzaIndex].price}€</h4>
+                    <h4>${formatPrice(myDishes[pizzaIndex].price)}</h4>
                     <button onclick="addDish(${pizzaIndex})" class="add_order_button">Add to basket</button>
                 </div>
             </article>`;
@@ -40,7 +40,7 @@ function getSaladDishTemplate(saladIndex) {
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">
-                    <h4>${myDishes[saladIndex].price}€</h4>
+                    <h4>${formatPrice(myDishes[saladIndex].price)}</h4>
                     <button onclick="addDish(${saladIndex})" class="add_order_button">Add to basket</button>
                 </div>
             </article>`;
@@ -55,7 +55,7 @@ function getOrderDishTemplate(orderIndex) {
                         <p id = "dish_amount_${orderIndex}" class="dish_font">${myDishes[orderIndex].amount}</p>
                         <p class="dish_font">+</p>
                     </div>
-                    <p class="dish_font">${myDishes[orderIndex].price}€</p>
+                    <p class="dish_font">${formatPrice(myDishes[orderIndex].price)}</p>
                 </span>
             </div>`
 }

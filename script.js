@@ -50,7 +50,6 @@ function addDish(orderIndex) {
 
     calculateDishPrice(orderIndex);
     calculateAmount(orderIndex);
-
 }
 
 function calculateAmount(orderIndex) {
@@ -77,9 +76,9 @@ function calculateDishPrice(orderIndex) {
     let newTotalPrice = 0;
     let dishPrice = myDishes[orderIndex].price;
 
-    currentSubTotal = parseFloat(currentSubTotal.replace(",", "."));
-    currentTotalPrice = parseFloat(currentTotalPrice.replace(",", "."));
-    dishPrice = parseFloat(dishPrice.replace(",", "."));
+    currentSubTotal = parseFloat(currentSubTotal);
+    currentTotalPrice = parseFloat(currentTotalPrice);
+    dishPrice = parseFloat(dishPrice);
 
     newDishPrice = currentSubTotal + dishPrice;
     newTotalPrice = currentTotalPrice + dishPrice;
