@@ -70,8 +70,8 @@ function calculateDishPrice(orderIndex) {
     let contentTotalPrice = document.getElementById('total_price');
     let contentTableTotalPrice = document.getElementById('total_table_price');
 
-    let currentSubTotal = contentDishPrice.innerHTML;
-    let currentTotalPrice = contentTableTotalPrice.innerHTML;
+    let currentSubTotal = contentDishPrice.innerText;
+    let currentTotalPrice = contentTableTotalPrice.innerText;
     let newDishPrice = 0;
     let newTotalPrice = 0;
     let dishPrice = myDishes[orderIndex].price;
@@ -83,9 +83,9 @@ function calculateDishPrice(orderIndex) {
     newDishPrice = currentSubTotal + dishPrice;
     newTotalPrice = currentTotalPrice + dishPrice;
 
-    contentDishPrice.innerHTML = formatPrice(newDishPrice);
-    contentTotalPrice.innerHTML = "(" + formatPrice(newTotalPrice) + ")";
-    contentTableTotalPrice.innerHTML = formatPrice(newTotalPrice);
+    contentDishPrice.innerText = formatPrice(newDishPrice);
+    contentTotalPrice.innerText = "(" + formatPrice(newTotalPrice) + ")";
+    contentTableTotalPrice.innerText = formatPrice(newTotalPrice);
 }
 
 
