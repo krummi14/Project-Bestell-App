@@ -8,6 +8,10 @@ function init() {
     addBasket();
 }
 
+function formatPrice(price) {
+    return price.toFixed(2).replace(".", ",") + "€";
+}
+
 function renderDishes() {
     renderBurgers();
     renderPizza();
@@ -50,19 +54,18 @@ function addDish(orderIndex) {
 
     calculateDishPrice(orderIndex);
     calculateAmount(orderIndex);
+    addClass(orderIndex);
 }
 
 function calculateAmount(orderIndex) {
     let contentAmount = document.getElementById(`dish_amount_${orderIndex}`);
     let contentOrderedDishAmount = document.getElementById(`ordered_dish_amount_${orderIndex}`);
-
+    let contentButtonAmount = document.getElementById(`added_information_${orderIndex}`);
+    
     myDishes[orderIndex].amount++;
     contentAmount.innerText = myDishes[orderIndex].amount;
     contentOrderedDishAmount.innerText = `${myDishes[orderIndex].amount} x ${myDishes[orderIndex].name}`;
-}
-
-function formatPrice(price) {
-    return price.toFixed(2).replace(".", ",") + "€";
+    contentButtonAmount.innerText = "Added " + myDishes[orderIndex].amount;
 }
 
 function calculateDishPrice(orderIndex) {
@@ -86,6 +89,20 @@ function calculateDishPrice(orderIndex) {
     contentDishPrice.innerText = formatPrice(newDishPrice);
     contentTotalPrice.innerText = "(" + formatPrice(newTotalPrice) + ")";
     contentTableTotalPrice.innerText = formatPrice(newTotalPrice);
+}
+
+function addClass(orderIndex) {
+    let firstClickonButton = document.getElementById(`first_click_on_add_order_button_${orderIndex}`);
+    let nextClickonButton = document.getElementById(`added_information_${orderIndex}`);
+    let contentPlusButton = document.getElementById(`plus_order_button_${orderIndex}`);
+
+    firstClickonButton.classList.remove('add_order_button');
+    nextClickonButton.classList.add('add_order_button');
+    contentPlusButton.classList.add('add_order_button');
+
+    firstClickonButton.classList.add('add_order_button_none');
+    nextClickonButton.classList.remove('add_order_button_none');
+    contentPlusButton.classList.remove('add_order_button_none');
 }
 
 
