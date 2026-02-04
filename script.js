@@ -61,7 +61,7 @@ function calculateAmount(orderIndex) {
     let contentAmount = document.getElementById(`dish_amount_${orderIndex}`);
     let contentOrderedDishAmount = document.getElementById(`ordered_dish_amount_${orderIndex}`);
     let contentButtonAmount = document.getElementById(`added_information_${orderIndex}`);
-    
+
     myDishes[orderIndex].amount++;
     contentAmount.innerText = myDishes[orderIndex].amount;
     contentOrderedDishAmount.innerText = `${myDishes[orderIndex].amount} x ${myDishes[orderIndex].name}`;
@@ -74,7 +74,7 @@ function calculateDishPrice(orderIndex) {
     let contentTableTotalPrice = document.getElementById('total_table_price');
 
     let currentSubTotal = contentDishPrice.innerText;
-    let currentTotalPrice = contentTableTotalPrice.innerText;
+    let currentTotalPrice = contentTableTotalPrice.innerText.replace(",", ".");
     let newDishPrice = 0;
     let newTotalPrice = 0;
     let dishPrice = myDishes[orderIndex].price;
@@ -91,18 +91,76 @@ function calculateDishPrice(orderIndex) {
     contentTableTotalPrice.innerText = formatPrice(newTotalPrice);
 }
 
+function recalculateAmount(orderIndex) {
+    let contentAmount = document.getElementById(`dish_amount_${orderIndex}`);
+    let contentOrderedDishAmount = document.getElementById(`ordered_dish_amount_${orderIndex}`);
+    let contentButtonAmount = document.getElementById(`added_information_${orderIndex}`);
+
+    myDishes[orderIndex].amount--;
+    contentAmount.innerText = myDishes[orderIndex].amount;
+    contentOrderedDishAmount.innerText = `${myDishes[orderIndex].amount} x ${myDishes[orderIndex].name}`;
+    contentButtonAmount.innerText = "Added " + myDishes[orderIndex].amount;
+
+    recalculateDishPrice(orderIndex);
+}
+
+function recalculateDishPrice(orderIndex) {
+    let contentDishPrice = document.getElementById('dish_price');
+    let contentTotalPrice = document.getElementById('total_price');
+    let contentTableTotalPrice = document.getElementById('total_table_price');
+
+    let currentSubTotal = contentDishPrice.innerText;
+    let currentTotalPrice = contentTableTotalPrice.innerText.replace(",", ".");
+    let newDishPrice = 0;
+    let newTotalPrice = 0;
+    let dishPrice = myDishes[orderIndex].price;
+
+    currentSubTotal = parseFloat(currentSubTotal);
+    currentTotalPrice = parseFloat(currentTotalPrice);
+    dishPrice = parseFloat(dishPrice);
+
+    newDishPrice = currentSubTotal - dishPrice;
+    newTotalPrice = currentTotalPrice - dishPrice;
+
+    contentDishPrice.innerText = formatPrice(newDishPrice);
+    contentTotalPrice.innerText = "(" + formatPrice(newTotalPrice) + ")";
+    contentTableTotalPrice.innerText = formatPrice(newTotalPrice);
+}
+
 function addClass(orderIndex) {
     let firstClickonButton = document.getElementById(`first_click_on_add_order_button_${orderIndex}`);
-    let nextClickonButton = document.getElementById(`added_information_${orderIndex}`);
+    let addedInformation = document.getElementById(`added_information_${orderIndex}`);
     let contentPlusButton = document.getElementById(`plus_order_button_${orderIndex}`);
 
     firstClickonButton.classList.remove('add_order_button');
-    nextClickonButton.classList.add('add_order_button');
+    addedInformation.classList.add('add_order_button_added');
     contentPlusButton.classList.add('add_order_button');
 
     firstClickonButton.classList.add('add_order_button_none');
-    nextClickonButton.classList.remove('add_order_button_none');
+    addedInformation.classList.remove('add_order_button_none');
     contentPlusButton.classList.remove('add_order_button_none');
+}
+
+function removeClass(orderIndex) {
+    let firstClickonButton = document.getElementById(`first_click_on_add_order_button_${orderIndex}`);
+    let addedInformation = document.getElementById(`added_information_${orderIndex}`);
+    let contentPlusButton = document.getElementById(`plus_order_button_${orderIndex}`);
+
+    firstClickonButton.classList.add('add_order_button');
+    addedInformation.classList.remove('add_order_button_added');
+    contentPlusButton.classList.remove('add_order_button');
+
+    firstClickonButton.classList.remove('add_order_button_none');
+    addedInformation.classList.add('add_order_button_none');
+    contentPlusButton.classList.add('add_order_button_none');
+}
+
+function deleteDish(orderIndex) {
+    let contentAddedDish = document.getElementById('added_dish_content');
+    contentAddedDish.remove();
+    myDishes[orderIndex].amount = 0;
+
+    removeClass(orderIndex);
 }
 
 

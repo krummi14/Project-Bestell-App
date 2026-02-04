@@ -59,13 +59,14 @@ function getSaladDishTemplate(saladIndex) {
 }
 
 function getOrderDishTemplate(orderIndex) {
-    return `<div class="ordered_dish_content">
+    return `<div id="added_dish_content" class="ordered_dish_content">
                 <h4 class="dish_font" id="ordered_dish_amount_${orderIndex}"></h4>
                 <span class="render_amount_and_price">
                     <div class="render_amount">
-                        <p class="dish_font">&#x1F5D1</p>
-                        <p id = "dish_amount_${orderIndex}" class="dish_font"></p>
-                        <p class="dish_font">+</p>
+                        <button onclick="deleteDish(${orderIndex})" class="dish_font_button_none">&#x1F5D1</button>
+                        <button onclick="recalculateAmount(${orderIndex})" class="dish_font_button">-</button>
+                        <p id="dish_amount_${orderIndex}" class="dish_font"></p>
+                        <button onclick="addDish(${orderIndex})" class="dish_font_button">+</button>
                     </div>
                     <p class="dish_font">${formatPrice(myDishes[orderIndex].price)}</p>
                 </span>
