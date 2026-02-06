@@ -51,10 +51,23 @@ function addDish(orderIndex, condition) {
     if (myDishes[orderIndex].amount == 0) {
         contentOrder.innerHTML += getOrderDishTemplate(orderIndex);
     }
+    if (condition == 0 && myDishes[orderIndex].amount == 1) {
+        addClassRubish(orderIndex);
+    }
 
-    calculateDishPrice(orderIndex, condition);
-    calculateAmount(orderIndex, condition);
-    addClass(orderIndex);
+    else {
+        calculateDishPrice(orderIndex, condition);
+        calculateAmount(orderIndex, condition);
+        addClass(orderIndex);
+    }
+}
+
+function deleteDish(orderIndex, condition) {
+    let contentAddedDish = document.getElementById(`added_dish_content_${orderIndex}`);
+    contentAddedDish.remove();
+
+    calculateDishPrice(orderIndex, condition)
+    removeClass(orderIndex);
 }
 
 function calculateAmount(orderIndex, condition) {
@@ -62,14 +75,14 @@ function calculateAmount(orderIndex, condition) {
     let contentOrderedDishAmount = document.getElementById(`ordered_dish_amount_${orderIndex}`);
     let contentButtonAmount = document.getElementById(`added_information_${orderIndex}`);
 
-    if(condition == 0) {
+    if (condition == 0) {
         myDishes[orderIndex].amount--;
     }
 
     else {
         myDishes[orderIndex].amount++;
     }
-    
+
     contentAmount.innerText = myDishes[orderIndex].amount;
     contentOrderedDishAmount.innerText = `${myDishes[orderIndex].amount} x ${myDishes[orderIndex].name}`;
     contentButtonAmount.innerText = "Added " + myDishes[orderIndex].amount;
@@ -93,6 +106,11 @@ function calculateDishPrice(orderIndex, condition) {
     if (condition == 0) {
         newDishPrice = currentSubTotal - dishPrice;
         newTotalPrice = currentTotalPrice - dishPrice;
+
+        if (myDishes[orderIndex].amount == 1) {
+            newTotalPrice = 0;
+            myDishes[orderIndex].amount = 0;
+        }
     }
 
     else {
@@ -133,12 +151,25 @@ function removeClass(orderIndex) {
     contentPlusButton.classList.add('add_order_button_none');
 }
 
-function deleteDish(orderIndex) {
-    let contentAddedDish = document.getElementById('added_dish_content');
-    contentAddedDish.remove();
-    myDishes[orderIndex].amount = 0;
+function addClassRubish(orderIndex) {
+    let contentRubishButton = document.getElementById(`rubbish_button_${orderIndex}`);
+    let contentLessButton = document.getElementById(`less_button_${orderIndex}`);
 
-    removeClass(orderIndex);
+    if (myDishes[orderIndex].amount == 1) {
+        contentRubishButton.classList.remove('dish_font_button_none');
+        contentRubishButton.classList.add('dish_font_button');
+
+        contentLessButton.classList.remove('dish_font_button');
+        contentLessButton.classList.add('dish_font_button_none');
+    }
+
+    else {
+        contentRubishButton.classList.add('dish_font_button_none');
+        contentRubishButton.classList.remove('dish_font_button');
+
+        contentLessButton.classList.add('dish_font_button');
+        contentLessButton.classList.remove('dish_font_button_none');
+    }
 }
 
 
