@@ -106,11 +106,6 @@ function calculateDishPrice(orderIndex, condition) {
     if (condition == 0) {
         newDishPrice = currentSubTotal - dishPrice;
         newTotalPrice = currentTotalPrice - dishPrice;
-
-        if (myDishes[orderIndex].amount == 1) {
-            newTotalPrice = 0;
-            myDishes[orderIndex].amount = 0;
-        }
     }
 
     else {
