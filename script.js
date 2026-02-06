@@ -2,6 +2,7 @@ let contentBurger = document.getElementById('burger_content');
 let contentPizza = document.getElementById('pizza_content');
 let contentSalad = document.getElementById('salad_content');
 let contentBasket = document.getElementById('basket_content');
+let switchCondition = 0;
 
 function init() {
     renderDishes();
@@ -66,7 +67,7 @@ function deleteDish(orderIndex, condition) {
     let contentAddedDish = document.getElementById(`added_dish_content_${orderIndex}`);
     contentAddedDish.remove();
 
-    calculateDishPrice(orderIndex, condition)
+    calculateDishPrice(orderIndex, condition);
     removeClass(orderIndex);
 }
 
@@ -167,4 +168,22 @@ function addClassRubish(orderIndex) {
     }
 }
 
+function deliverySwitch() {
+    let contentDeliveryFee = document.getElementById('delivery_fee');
+    let contentTableTotalPrice = document.getElementById('total_table_price');
+    let contentTotalPrice = document.getElementById('total_price');
 
+    if (switchCondition == 0) {
+        contentDeliveryFee.innerText = "4,99€";
+        contentTableTotalPrice.innerText = "4,99€";
+        contentTotalPrice.innerText = "(4,99€)";
+        switchCondition = 1;
+    }
+
+    else {
+        contentDeliveryFee.innerText = "0,00€";
+        contentTableTotalPrice.innerText = "0,00€";
+        contentTotalPrice.innerText = "(0,00€)";
+        switchCondition = 0;
+    }
+}

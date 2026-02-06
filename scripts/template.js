@@ -75,6 +75,14 @@ function getOrderDishTemplate(orderIndex) {
 
 function getBasketTemplate() {
     return `<h3>Your Basket</h3>
+            <div class="delivery_or_pickUp_label">
+                <p class="delivery_or_pickUp_label_font">Pick Up</p>
+                    <label class="switch">
+                        <input onclick="deliverySwitch()" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                <p class="delivery_or_pickUp_label_font">Delivery</p>
+            </div>
             <span id="order_content" class="order_content_gap_and_pad">
 
             </span>
@@ -85,11 +93,11 @@ function getBasketTemplate() {
                 </tr>
                 <tr class="table_padding_bottom">
                     <td class="text_left">Delivery Fee</td>
-                    <td class="text_right">4,99€</td>
+                    <td class="text_right"><div id="delivery_fee">0,00€</div></td>
                 </tr>
                 <tr class="table_border_top">
                     <th class="text_left">Total</th>
-                    <th class="text_right"><div id="total_table_price">4,99€</div></th>
+                    <th class="text_right"><div id="total_table_price">0,00€</div></th>
                 </tr>
             </table>
             <span class="order_button_content">
