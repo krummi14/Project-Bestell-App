@@ -43,7 +43,7 @@ function renderSalad() {
     }
 }
 
-function addBasket() {
+function addBasket(orderIndex) {
     contentBasket.innerHTML = getBasketTemplate();
 }
 
@@ -66,6 +66,7 @@ function addDish(orderIndex, condition) {
 function deleteDish(orderIndex, condition) {
     let contentAddedDish = document.getElementById(`added_dish_content_${orderIndex}`);
     contentAddedDish.remove();
+    myDishes[orderIndex].amount = 0;
 
     calculateDishPrice(orderIndex, condition);
     removeClass(orderIndex);
@@ -93,15 +94,18 @@ function calculateDishPrice(orderIndex, condition) {
     let contentDishPrice = document.getElementById('dish_price');
     let contentTotalPrice = document.getElementById('total_price');
     let contentTableTotalPrice = document.getElementById('total_table_price');
+    let contentDeliveryFee = document.getElementById('delivery_fee');
 
     let currentSubTotal = contentDishPrice.innerText.replace(",", ".");
     let currentTotalPrice = contentTableTotalPrice.innerText.replace(",", ".");
+    let currentDeliveryFee = contentDeliveryFee.innerText.replace(",", ".");
     let newDishPrice = 0;
     let newTotalPrice = 0;
     let dishPrice = myDishes[orderIndex].price;
 
     currentSubTotal = parseFloat(currentSubTotal);
     currentTotalPrice = parseFloat(currentTotalPrice);
+    currentDeliveryFee = parseFloat(currentDeliveryFee);
     dishPrice = parseFloat(dishPrice);
 
     if (condition == 0) {
@@ -170,20 +174,52 @@ function addClassRubish(orderIndex) {
 
 function deliverySwitch() {
     let contentDeliveryFee = document.getElementById('delivery_fee');
-    let contentTableTotalPrice = document.getElementById('total_table_price');
-    let contentTotalPrice = document.getElementById('total_price');
 
     if (switchCondition == 0) {
         contentDeliveryFee.innerText = "4,99€";
-        contentTableTotalPrice.innerText = "4,99€";
-        contentTotalPrice.innerText = "(4,99€)";
         switchCondition = 1;
     }
 
+
     else {
         contentDeliveryFee.innerText = "0,00€";
-        contentTableTotalPrice.innerText = "0,00€";
-        contentTotalPrice.innerText = "(0,00€)";
         switchCondition = 0;
     }
+
+    calculatNewDishPrice();
 }
+
+function calculatNewDishPrice() {
+    let contentDishPrice = document.getElementById('dish_price');
+    let contentTotalPrice = document.getElementById('total_price');
+    let contentTableTotalPrice = document.getElementById('total_table_price');
+    let contentDeliveryFee = document.getElementById('delivery_fee');
+
+    let currentSubTotal = contentDishPrice.innerText.replace(",", ".");
+    let currentTotalPrice = contentTableTotalPrice.innerText.replace(",", ".");
+    let currentDeliveryFee = contentDeliveryFee.innerText.replace(",", ".");
+    let newDishPrice = 0;
+    let newTotalPrice = 0;
+
+    currentSubTotal = parseFloat(currentSubTotal);
+    currentTotalPrice = parseFloat(currentTotalPrice);
+    currentDeliveryFee = parseFloat(currentDeliveryFee);
+
+    if (currentSubTotal == 0) {
+        newTotalPrice = currentTotalPrice + currentDeliveryFee;
+        contentDishPrice.innerText = formatPrice(newDishPrice);
+        
+        if(currentDeliveryFee == 0) {
+            newTotalPrice = currentSubTotal + currentDeliveryFee;
+        }
+    }
+
+    else {
+        newTotalPrice = currentSubTotal + currentDeliveryFee;
+        contentDishPrice.innerText = formatPrice(currentSubTotal);
+    }
+    
+    contentTotalPrice.innerText = "(" + formatPrice(newTotalPrice) + ")";
+    contentTableTotalPrice.innerText = formatPrice(newTotalPrice);
+}
+
