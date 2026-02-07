@@ -88,9 +88,44 @@
 
 /* end of hero section*/
 
+/* style of navigation section*/
+.navigation {
+    width: 100%;
+    background-color: rgba(253, 234, 220, 1);
+    margin-bottom: 48px;
+    padding-left: 80px;
+    padding-right: 32px;
+}
+
+.menu_navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 80px;
+    max-width: 1440px;
+    margin: 0 auto;
+    
+}
+
+.category {
+    font-size: 32px;
+    font-weight: bold;
+    color: rgba(54, 53, 52, 1);
+}
+
+.category:hover {
+    font-weight: bold;
+    color: rgba(231, 108, 31, 1);
+}
+
 /* style of dish_content_wrapper */
 .dish_content_wrapper {
     position: relative;
+}
+
+.dish_content_wrapper_maxWidth {
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 /* end of dish_content_wrapper */
