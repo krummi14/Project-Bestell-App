@@ -228,6 +228,12 @@ table {
     padding-bottom: 8px;
 }
 
+.basket_closed {
+    display: none;
+}
+/* end of basket*/
+
+
 /* style of dish content */
 .dish_headline {
     position: relative;

@@ -223,3 +223,28 @@ function calculatNewDishPrice() {
     contentTableTotalPrice.innerText = formatPrice(newTotalPrice);
 }
 
+let contentDialog = document.getElementById('dialog_order_content');
+
+function openDialogOrder() {
+    
+    contentDialog.showModal();
+    contentDialog.classList.add("dialog_opend");
+    contentDialog.classList.remove("dialog_closed");
+    contentBasket.classList.add("basket_closed");
+
+    setTimeout(function () {
+        contentDialog.remove();
+    }, 10000)
+}
+
+function closeDialogOrder() {   
+    contentDialog.classList.remove("dialog_opend");
+    contentDialog.classList.add("dialog_closed");
+
+    setTimeout(function () {
+        contentDialog.close();
+    }, 125);
+
+    
+}
+

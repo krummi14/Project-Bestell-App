@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./styles/assets.css">
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/dialog.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./assets/icon/logo_burger.png">
 
@@ -52,12 +53,12 @@
         </section>
 
         <section class="navigation">
-            
-                <nav class="menu_navigation">   
-                    <a class="category" href="#burger_and_sandwiches">&#8250 Burger and Sandwiches</a>
-                    <a class="category" href="#pizza">&#8250 Pizza</a>
-                    <a class="category" href="#salad">&#8250 Salad</a>
-                </nav>
+
+            <nav class="menu_navigation">
+                <a class="category" href="#burger_and_sandwiches">&#8250 Burger and Sandwiches</a>
+                <a class="category" href="#pizza">&#8250 Pizza</a>
+                <a class="category" href="#salad">&#8250 Salad</a>
+            </nav>
             </span>
         </section>
 
@@ -120,6 +121,21 @@
                 <div id="basket_content" class="basket">
 
                 </div>
+            </section>
+
+            <section class="order_confirmed">
+                <dialog id="dialog_order_content" class="dialog_order_content dialog_closed">
+                    <header class="dialog_header">
+                        <button onclick="closeDialogOrder()" class="close_order_button">X</button>
+                    </header>
+
+                    <div class="dialog_main_content">
+                        <img class="order_icon" src="./assets/icon/ordered_icon.png" alt="Image of Order Icon">
+                        <p class="order_confirmed_text">Order confirmed!</p>
+                        <p class="order_confirmed_information">Your food is on the way!</p>
+                    </div>
+                </dialog>
+
             </section>
 
         </div>

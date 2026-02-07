@@ -184,3 +184,21 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.order_icon {
+    transform: scaleX(-1);
+    width: 80px;
+    height: 56px;
+}
+
+.close_order_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+    color: rgba(253, 234, 220, 1);
+    background-color: rgba(54, 53, 52, 1);
+    border: none;
+    font-size: 16px;
+}
+

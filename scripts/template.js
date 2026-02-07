@@ -101,7 +101,7 @@ function getBasketTemplate() {
                 </tr>
             </table>
             <span class="order_button_content">
-                <button class="order_button">Buy now<div id="total_price">(0,00€)</div></button>
+                <button onclick="openDialogOrder()" class="order_button">Buy now<div id="total_price">(0,00€)</div></button>
             </span>`
 }
 
