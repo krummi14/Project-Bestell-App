@@ -4,7 +4,7 @@ function getBurgerDishTemplate(burgerIndex) {
                     <img class="dish_img" src="${myDishes[burgerIndex].img}">
                     <figcaption class="dish_recipe">
                         <h4>${myDishes[burgerIndex].name}</h4>
-                        <p>${myDishes[burgerIndex].description}</p>
+                        <p class="dish_recipe_text">${myDishes[burgerIndex].description}</p>
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">

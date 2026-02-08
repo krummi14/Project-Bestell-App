@@ -47,3 +47,18 @@ h4 {
     font-size: 24px;
     font-weight: 600;
 }
+
+@media(min-width: 320px) and (max-width: 1200px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 32px;
+        margin-left: 0;
+    }
+
+    h4 {
+        line-height: 1;
+    }
+}
