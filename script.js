@@ -44,8 +44,25 @@ function renderSalad() {
     }
 }
 
-function addBasket(orderIndex) {
+function addBasket() {
     contentBasket.innerHTML = getBasketTemplate();
+}
+
+function basketWithDishes(orderIndex) {
+    let contentBasketEmpty = document.getElementById('basket_empty');
+    let contentBasketFull = document.getElementById('basket_full');
+
+    if (myDishes[orderIndex].amount == 0) {
+        contentBasketEmpty.classList.remove('basket_empty_to_full');
+        contentBasketEmpty.classList.add('basket_empty_info');
+        contentBasketFull.classList.add('basket_empty_to_full');
+    }
+
+    else {
+        contentBasketEmpty.classList.add('basket_empty_to_full');
+        contentBasketEmpty.classList.remove('basket_empty_info');
+        contentBasketFull.classList.remove('basket_empty_to_full');
+    }
 }
 
 function addDish(orderIndex, condition) {
@@ -62,6 +79,7 @@ function addDish(orderIndex, condition) {
         calculateAmount(orderIndex, condition);
         addClass(orderIndex);
     }
+    basketWithDishes(orderIndex);
 }
 
 function deleteDish(orderIndex, condition) {
@@ -71,6 +89,7 @@ function deleteDish(orderIndex, condition) {
 
     calculateDishPrice(orderIndex, condition);
     removeClass(orderIndex);
+    basketWithDishes(orderIndex);
 }
 
 function calculateAmount(orderIndex, condition) {
@@ -209,8 +228,8 @@ function calculatNewDishPrice() {
     if (currentSubTotal == 0) {
         newTotalPrice = currentTotalPrice + currentDeliveryFee;
         contentDishPrice.innerText = formatPrice(newDishPrice);
-        
-        if(currentDeliveryFee == 0) {
+
+        if (currentDeliveryFee == 0) {
             newTotalPrice = currentSubTotal + currentDeliveryFee;
         }
     }
@@ -219,13 +238,13 @@ function calculatNewDishPrice() {
         newTotalPrice = currentSubTotal + currentDeliveryFee;
         contentDishPrice.innerText = formatPrice(currentSubTotal);
     }
-    
+
     contentTotalPrice.innerText = "(" + formatPrice(newTotalPrice) + ")";
     contentTableTotalPrice.innerText = formatPrice(newTotalPrice);
 }
 
 function openDialogOrder() {
-    
+
     contentDialog.showModal();
     contentDialog.classList.add("dialog_opend");
     contentDialog.classList.remove("dialog_closed");
@@ -236,12 +255,12 @@ function openDialogOrder() {
     }, 10000)
 }
 
-function closeDialogOrder() {   
+function closeDialogOrder() {
     contentDialog.classList.remove("dialog_opend");
     contentDialog.classList.add("dialog_closed");
 
     setTimeout(function () {
         contentDialog.close();
-    }, 125);  
+    }, 125);
 }
 

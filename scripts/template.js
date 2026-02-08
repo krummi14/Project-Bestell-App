@@ -75,36 +75,42 @@ function getOrderDishTemplate(orderIndex) {
 
 function getBasketTemplate() {
     return `<h3>Your Basket</h3>
-            <div class="delivery_or_pickUp_label">
-                <p class="delivery_or_pickUp_label_font">Pick Up</p>
-                    <label class="switch">
-                        <input onclick="deliverySwitch()" type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                <p class="delivery_or_pickUp_label_font">Delivery</p>
+            <div id="basket_empty" class="basket_empty_info">
+                <p class="basket_nothing_text">Nothing here yet.<br> Go ahead and choose something delicious!</p>
+                <p class="basket_icon">&#128722</p>
             </div>
+            <div id="basket_full" class="basket_full_info basket_empty_to_full">
+                <div class="delivery_or_pickUp_label">
+                    <p class="delivery_or_pickUp_label_font">Pick Up</p>
+                        <label class="switch">
+                            <input onclick="deliverySwitch()" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    <p class="delivery_or_pickUp_label_font">Delivery</p>
+                </div>
             
                 <span id="order_content" class="order_content_gap_and_pad order_list">
 
                 </span>
         
-            <table>
-                <tr>
-                    <td class="text_left">Subtotal</td>
-                    <td class="text_right"><div id="dish_price">0,00€</div></td>
-                </tr>
-                <tr class="table_padding_bottom">
-                    <td class="text_left">Delivery Fee</td>
-                    <td class="text_right"><div id="delivery_fee">0,00€</div></td>
-                </tr>
-                <tr class="table_border_top">
-                    <th class="text_left">Total</th>
-                    <th class="text_right"><div id="total_table_price">0,00€</div></th>
-                </tr>
-            </table>
-            <span class="order_button_content">
+                <table>
+                    <tr>
+                        <td class="text_left">Subtotal</td>
+                        <td class="text_right"><div id="dish_price">0,00€</div></td>
+                    </tr>
+                    <tr class="table_padding_bottom">
+                        <td class="text_left">Delivery Fee</td>
+                        <td class="text_right"><div id="delivery_fee">0,00€</div></td>
+                    </tr>
+                    <tr class="table_border_top">
+                        <th class="text_left">Total</th>
+                        <th class="text_right"><div id="total_table_price">0,00€</div></th>
+                    </tr>
+                </table>
+                <span class="order_button_content">
                 <button onclick="openDialogOrder()" class="order_button">Buy now<div id="total_price">(0,00€)</div></button>
-            </span>`
+                </span>
+            </div>`
 }
 
 console.log(myDishes);
