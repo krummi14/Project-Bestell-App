@@ -154,6 +154,26 @@
     right: 0;
 }
 
+.order_list {
+    width: 100%;
+    max-height: 480px;
+    overflow-y: auto;
+}
+
+.order_list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.order_list::-webkit-scrollbar-track {
+    background: white;
+    border-radius: 8px;
+}
+
+.order_list::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 8px;
+}
+
 .order_content_gap_and_pad {
     display: flex;
     flex-direction: column;

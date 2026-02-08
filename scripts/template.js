@@ -83,9 +83,11 @@ function getBasketTemplate() {
                     </label>
                 <p class="delivery_or_pickUp_label_font">Delivery</p>
             </div>
-            <span id="order_content" class="order_content_gap_and_pad">
+            
+                <span id="order_content" class="order_content_gap_and_pad order_list">
 
-            </span>
+                </span>
+        
             <table>
                 <tr>
                     <td class="text_left">Subtotal</td>

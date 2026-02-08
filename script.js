@@ -2,6 +2,7 @@ let contentBurger = document.getElementById('burger_content');
 let contentPizza = document.getElementById('pizza_content');
 let contentSalad = document.getElementById('salad_content');
 let contentBasket = document.getElementById('basket_content');
+let contentDialog = document.getElementById('dialog_order_content');
 let switchCondition = 0;
 
 function init() {
@@ -223,8 +224,6 @@ function calculatNewDishPrice() {
     contentTableTotalPrice.innerText = formatPrice(newTotalPrice);
 }
 
-let contentDialog = document.getElementById('dialog_order_content');
-
 function openDialogOrder() {
     
     contentDialog.showModal();
@@ -243,8 +242,6 @@ function closeDialogOrder() {
 
     setTimeout(function () {
         contentDialog.close();
-    }, 125);
-
-    
+    }, 125);  
 }
 
