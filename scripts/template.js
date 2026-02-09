@@ -24,7 +24,7 @@ function getPizzaDishTemplate(pizzaIndex) {
                     <img class="dish_img dish_img_position_${pizzaIndex}" src="${myDishes[pizzaIndex].img}">
                     <figcaption class="dish_recipe">
                         <h4>${myDishes[pizzaIndex].name}</h4>
-                        <p>${myDishes[pizzaIndex].description}</p>
+                        <p class="dish_recipe_text">${myDishes[pizzaIndex].description}</p>
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">
@@ -44,7 +44,7 @@ function getSaladDishTemplate(saladIndex) {
                     <img class="dish_img" src="${myDishes[saladIndex].img}">
                     <figcaption class="dish_recipe">
                         <h4>${myDishes[saladIndex].name}</h4>
-                        <p>${myDishes[saladIndex].description}</p>
+                        <p class="dish_recipe_text">${myDishes[saladIndex].description}</p>
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">
@@ -60,7 +60,10 @@ function getSaladDishTemplate(saladIndex) {
 
 function getOrderDishTemplate(orderIndex) {
     return `<div id="added_dish_content_${orderIndex}" class="ordered_dish_content">
-                <h4 class="dish_font" id="ordered_dish_amount_${orderIndex}"></h4>
+                <span class="dish_headline_and_rubbish">
+                    <h4 class="dish_font" id="ordered_dish_amount_${orderIndex}"></h4>
+                    <button id="rubbish_button_onTop_${orderIndex}" onclick="deleteDish(${orderIndex}, 0)" class="dish_font_button_none">&#x1F5D1</button>
+                </span>
                 <span class="render_amount_and_price">
                     <div class="render_amount">
                         <button id="rubbish_button_${orderIndex}" onclick="deleteDish(${orderIndex}, 0)" class="dish_font_button_none">&#x1F5D1</button>
@@ -74,10 +77,13 @@ function getOrderDishTemplate(orderIndex) {
 }
 
 function getBasketTemplate() {
-    return `<h3>Your Basket</h3>
+    return `<div class="close_button_content">
+                <button class="close_basket_button_responsive close_button_none" onclick="closeBasketResponsive()">X</button>
+            </div>
+            <h3>Your Basket</h3>
             <div id="basket_empty" class="basket_empty_info">
                 <p class="basket_nothing_text">Nothing here yet.<br> Go ahead and choose something delicious!</p>
-                <p class="basket_icon">&#128722</p>
+                <img src="./assets/icon/basket.png" alt="image of shopping cart" class="basket_icon">
             </div>
             <div id="basket_full" class="basket_full_info basket_empty_to_full">
                 <div class="delivery_or_pickUp_label">

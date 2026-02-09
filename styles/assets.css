@@ -125,6 +125,14 @@
     font-weight: bold;
 }
 
+.dish_font_button:hover {
+    color: rgba(231, 108, 31, 1);
+    background-color: rgba(253, 234, 220, 1);
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+}
+
 .dish_font_button_none {
     display: none;
 }
@@ -190,7 +198,6 @@ input:checked+.slider:before {
 
 .order_icon {
     transform: scaleX(-1);
-    width: 80px;
     height: 56px;
 }
 
@@ -203,6 +210,35 @@ input:checked+.slider:before {
     background-color: rgba(54, 53, 52, 1);
     border: none;
     font-size: 16px;
+}
+
+.basket_icon {
+    height: 120px;
+    width: 120px;
+    margin-top: 80px;
+}
+
+.basket_responsive_button {
+    background-color: rgba(54, 53, 52, 1);
+    border: none;
+}
+
+.close_basket_button_responsive {
+    font-size: 24px;
+    border: none;
+    color: rgba(253, 234, 220, 1);
+    background-color: rgba(54, 53, 52, 1);
+}
+
+.close_button_none {
+    display: none;
+}
+
+.close_button_content {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
 }
 
 @media(min-width: 320px) and (max-width: 1200px) {
@@ -237,4 +273,18 @@ input:checked+.slider:before {
     .add_order_button {
         padding: 0;
     }
+
+    .order_button {
+        padding: 8px 16px;
+        font-size: 24px;
+    }
+
+    .order_button_content {
+        padding: 0 0;
+    }
+
+    .close_button_none {
+    display: block;
+    }
 }
+

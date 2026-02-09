@@ -51,8 +51,13 @@ function addBasket() {
 function basketWithDishes(orderIndex) {
     let contentBasketEmpty = document.getElementById('basket_empty');
     let contentBasketFull = document.getElementById('basket_full');
+    let contantTotalPrice = document.getElementById('total_table_price');
 
-    if (myDishes[orderIndex].amount == 0) {
+    let totalPrice = contantTotalPrice.innerText.replace(",", ".");
+
+    totalPrice = parseFloat(totalPrice);
+
+    if (totalPrice == 0) {
         contentBasketEmpty.classList.remove('basket_empty_to_full');
         contentBasketEmpty.classList.add('basket_empty_info');
         contentBasketFull.classList.add('basket_empty_to_full');
@@ -70,13 +75,15 @@ function addDish(orderIndex, condition) {
     if (myDishes[orderIndex].amount == 0) {
         contentOrder.innerHTML += getOrderDishTemplate(orderIndex);
     }
+
     if (condition == 0 && myDishes[orderIndex].amount == 1) {
-        addClassRubish(orderIndex);
+        addClassRubbish(orderIndex, condition);
     }
 
     else {
         calculateDishPrice(orderIndex, condition);
         calculateAmount(orderIndex, condition);
+        addClassRubbish(orderIndex, condition);
         addClass(orderIndex);
     }
     basketWithDishes(orderIndex);
@@ -85,11 +92,14 @@ function addDish(orderIndex, condition) {
 function deleteDish(orderIndex, condition) {
     let contentAddedDish = document.getElementById(`added_dish_content_${orderIndex}`);
     contentAddedDish.remove();
-    myDishes[orderIndex].amount = 0;
+    
 
     calculateDishPrice(orderIndex, condition);
     removeClass(orderIndex);
+    myDishes[orderIndex].amount = 0;
     basketWithDishes(orderIndex);
+
+    
 }
 
 function calculateAmount(orderIndex, condition) {
@@ -131,6 +141,11 @@ function calculateDishPrice(orderIndex, condition) {
     if (condition == 0) {
         newDishPrice = currentSubTotal - dishPrice;
         newTotalPrice = currentTotalPrice - dishPrice;
+
+        if (myDishes[orderIndex].amount >= 1) {
+            newDishPrice = currentSubTotal - (dishPrice * myDishes[orderIndex].amount);
+            newTotalPrice = currentTotalPrice - (dishPrice * myDishes[orderIndex].amount);
+        }
     }
 
     else {
@@ -171,24 +186,22 @@ function removeClass(orderIndex) {
     contentPlusButton.classList.add('add_order_button_none');
 }
 
-function addClassRubish(orderIndex) {
-    let contentRubishButton = document.getElementById(`rubbish_button_${orderIndex}`);
+function addClassRubbish(orderIndex, condition) {
+    let contentRubbishButton = document.getElementById(`rubbish_button_${orderIndex}`);
     let contentLessButton = document.getElementById(`less_button_${orderIndex}`);
+    let contentRubbishButtonOnTop = document.getElementById(`rubbish_button_onTop_${orderIndex}`);
 
-    if (myDishes[orderIndex].amount == 1) {
-        contentRubishButton.classList.remove('dish_font_button_none');
-        contentRubishButton.classList.add('dish_font_button');
+    if (condition == 0 && myDishes[orderIndex].amount == 1) {
+        contentRubbishButton.classList.remove('dish_font_button_none');
+        contentRubbishButton.classList.add('dish_font_button');
 
         contentLessButton.classList.remove('dish_font_button');
         contentLessButton.classList.add('dish_font_button_none');
     }
 
-    else {
-        contentRubishButton.classList.add('dish_font_button_none');
-        contentRubishButton.classList.remove('dish_font_button');
-
-        contentLessButton.classList.add('dish_font_button');
-        contentLessButton.classList.remove('dish_font_button_none');
+    else if (condition == 1 && myDishes[orderIndex].amount > 1) {
+        contentRubbishButtonOnTop.classList.remove('dish_font_button_none');
+        contentRubbishButtonOnTop.classList.add('dish_font_button');
     }
 }
 
@@ -244,7 +257,6 @@ function calculatNewDishPrice() {
 }
 
 function openDialogOrder() {
-
     contentDialog.showModal();
     contentDialog.classList.add("dialog_opend");
     contentDialog.classList.remove("dialog_closed");
@@ -262,5 +274,13 @@ function closeDialogOrder() {
     setTimeout(function () {
         contentDialog.close();
     }, 125);
+}
+
+function openBasketResponsive() {
+    contentBasket.classList.remove('responsive_basket_none');
+}
+
+function closeBasketResponsive() {
+    contentBasket.classList.add('responsive_basket_none');
 }
 
