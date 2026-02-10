@@ -87,5 +87,3 @@ function getTemplateRespoMenu(totalAmount) {
             </button>
             `
 }
-
-console.log(myDishes);

@@ -105,7 +105,7 @@ function addDish(orderIndex, condition) {
         calculateDishPrice(orderIndex, condition);
         calculateAmount(orderIndex, condition);
         addClassRubbish(orderIndex, condition);
-        addClass(orderIndex);
+        changeClass(orderIndex)
         updateBasketAmount();
         classShoppingCartResponisveCount();
     }
@@ -118,11 +118,10 @@ function deleteDish(orderIndex, condition) {
     contentAddedDish.remove();
 
     calculateDishPrice(orderIndex, condition);
-    removeClass(orderIndex);
     myDishes[orderIndex].amount = 0;
+    changeClass(orderIndex);
     updateBasketAmount();
     basketWithDishes(orderIndex);
-    
 }
 
 function calculateAmount(orderIndex, condition) {
@@ -181,38 +180,35 @@ function calculateDishPrice(orderIndex, condition) {
     contentTableTotalPrice.innerText = formatPrice(newTotalPrice);
 }
 
-function addClass(orderIndex) {
+function changeClass(orderIndex) {
     let firstClickonButton = document.getElementById(`first_click_on_add_order_button_${orderIndex}`);
     let addedInformation = document.getElementById(`added_information_${orderIndex}`);
     let contentPlusButton = document.getElementById(`plus_order_button_${orderIndex}`);
     let contentAddedDish = document.getElementById(`added_dish_button_and_amount${orderIndex}`);
 
-    firstClickonButton.classList.remove('add_order_button');
-    contentAddedDish.classList.remove('dish_order_buttons_none');
-    addedInformation.classList.add('add_order_button_added');
-    contentPlusButton.classList.add('add_order_button');
+    if (myDishes[orderIndex].amount == 0) {
+        firstClickonButton.classList.add('add_order_button');
+        contentAddedDish.classList.add('dish_order_buttons_none');
+        addedInformation.classList.remove('add_order_button_added');
+        contentPlusButton.classList.remove('add_order_button');
 
-    firstClickonButton.classList.add('add_order_button_none');
-    contentAddedDish.classList.add('dish_order_buttons');
-    addedInformation.classList.remove('add_order_button_none');
-    contentPlusButton.classList.remove('add_order_button_none');
-}
+        firstClickonButton.classList.remove('add_order_button_none');
+        contentAddedDish.classList.remove('dish_order_buttons');
+        addedInformation.classList.add('add_order_button_none');
+        contentPlusButton.classList.add('add_order_button_none');
+    }
 
-function removeClass(orderIndex) {
-    let firstClickonButton = document.getElementById(`first_click_on_add_order_button_${orderIndex}`);
-    let addedInformation = document.getElementById(`added_information_${orderIndex}`);
-    let contentPlusButton = document.getElementById(`plus_order_button_${orderIndex}`);
-    let contentAddedDish = document.getElementById(`added_dish_button_and_amount${orderIndex}`);
+    else {
+        firstClickonButton.classList.remove('add_order_button');
+        contentAddedDish.classList.remove('dish_order_buttons_none');
+        addedInformation.classList.add('add_order_button_added');
+        contentPlusButton.classList.add('add_order_button');
 
-    firstClickonButton.classList.add('add_order_button');
-    contentAddedDish.classList.add('dish_order_buttons_none');
-    addedInformation.classList.remove('add_order_button_added');
-    contentPlusButton.classList.remove('add_order_button');
-
-    firstClickonButton.classList.remove('add_order_button_none');
-    contentAddedDish.classList.remove('dish_order_buttons');
-    addedInformation.classList.add('add_order_button_none');
-    contentPlusButton.classList.add('add_order_button_none');
+        firstClickonButton.classList.add('add_order_button_none');
+        contentAddedDish.classList.add('dish_order_buttons');
+        addedInformation.classList.remove('add_order_button_none');
+        contentPlusButton.classList.remove('add_order_button_none');
+    }
 }
 
 function addClassRubbish(orderIndex, condition) {
@@ -332,4 +328,3 @@ function classShoppingCartResponisveCount() {
         contentNumberTotalAmount.classList.remove('total_amount_basket_none');
     }
 }
-

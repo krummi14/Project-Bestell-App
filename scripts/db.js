@@ -34,7 +34,7 @@ let myDishes = [
         "amount": 0,
         "img": "./assets/img/margherita.jpg",
     },
-     {
+    {
         "name": "Pizza salami (scharf)",
         "price": 13.90,
         "description": "mit San Marzano Tomatensoße, Fior di Latte Morzarelle und frischer Rinder-Peperonisalami",
@@ -55,14 +55,14 @@ let myDishes = [
         "amount": 0,
         "img": "./assets/img/chorizo.jpg",
     },
-        {
+    {
         "name": "Rucolasalat mit rinderstreifen",
         "price": 16.90,
         "description": "mit Rucola, Rinderstreifen, Feltsalat, Feta, Cherry Tomaten, Essig-Öl Dressing",
         "amount": 0,
         "img": "./assets/img/warm beef.jpg",
     },
-     {
+    {
         "name": "Kleiner gemischter salat",
         "price": 7.90,
         "description": "mit grünem Salat, Gurken, Karotten, Paprika und Radieschen",
