@@ -112,6 +112,10 @@
     width: auto;
 }
 
+.dish_order_buttons_none {
+    display: none;
+}
+
 .dish_order_buttons {
     display: flex;
     flex-direction: row;
@@ -241,6 +245,68 @@ input:checked+.slider:before {
     width: 100%;
 }
 
+.home_button_responsive {
+    background-image: url('../assets/icon/home.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
+.profile_button_responsive {
+    background-image: url('../assets/icon/Profile.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
+.default_button_responsive {
+    background-image: url('../assets/icon/Property\ default.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
+.shopping_button_responsive {
+    background-image: url('../assets/icon/shopping_cart.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
+.home_button_responsive:hover {
+    background-image: url('../assets/icon/home_press.svg');
+}
+
+.profile_button_responsive:hover {
+    background-image: url('../assets/icon/profile_press.png');
+}
+
+.default_button_responsive:hover {
+    background-image: url('../assets/icon/default_press.svg');
+}
+
+.shopping_button_responsive:hover {
+    background-image: url('../assets/icon/shoping_cart_press.svg');
+}
+
+.shopping_button_responsive_count {
+    position: relative;
+    background-image: url('../assets/icon/shopping_cart_count.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
 @media(min-width: 320px) and (max-width: 1200px) {
     .logo_img {
         height: 32px;
@@ -284,7 +350,6 @@ input:checked+.slider:before {
     }
 
     .close_button_none {
-    display: block;
+        display: block;
     }
 }
-

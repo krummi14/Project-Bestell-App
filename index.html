@@ -120,7 +120,55 @@
 
             <section class="basket_wrapper ">
                 <div id="basket_content" class="basket responsive_basket_none">
+                    <div class="close_button_content">
+                        <button class="close_basket_button_responsive close_button_none"
+                            onclick="closeBasketResponsive()">X</button>
+                    </div>
+                    <h3>Your Basket</h3>
+                    <div id="basket_empty" class="basket_empty_info">
+                        <p class="basket_nothing_text">Nothing here yet.<br> Go ahead and choose something delicious!
+                        </p>
+                        <img src="./assets/icon/basket.png" alt="image of shopping cart" class="basket_icon">
+                    </div>
+                    <div id="basket_full" class="basket_full_info basket_empty_to_full">
+                        <div class="delivery_or_pickUp_label">
+                            <p class="delivery_or_pickUp_label_font">Pick Up</p>
+                            <label class="switch">
+                                <input onclick="deliverySwitch()" type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                            <p class="delivery_or_pickUp_label_font">Delivery</p>
+                        </div>
 
+                        <span id="order_content" class="order_content_gap_and_pad order_list">
+
+                        </span>
+
+                        <table>
+                            <tr>
+                                <td class="text_left">Subtotal</td>
+                                <td class="text_right">
+                                    <div id="dish_price">0,00€</div>
+                                </td>
+                            </tr>
+                            <tr class="table_padding_bottom">
+                                <td class="text_left">Delivery Fee</td>
+                                <td class="text_right">
+                                    <div id="delivery_fee">0,00€</div>
+                                </td>
+                            </tr>
+                            <tr class="table_border_top">
+                                <th class="text_left">Total</th>
+                                <th class="text_right">
+                                    <div id="total_table_price">0,00€</div>
+                                </th>
+                            </tr>
+                        </table>
+                        <span class="order_button_content">
+                            <button onclick="openDialogOrder()" class="order_button">Buy now<div id="total_price">
+                                    (0,00€)</div></button>
+                        </span>
+                    </div>
                 </div>
             </section>
 
@@ -141,19 +189,8 @@
 
         </div>
 
-        <div class="menu_responsive responsive_menu_none">
-            <button class="basket_responsive_button">
-                <img src="./assets/icon/home.svg" alt="">
-            </button>
-            <button class="basket_responsive_button">
-                <img src="./assets/icon/Profile.svg" alt="">
-            </button>
-            <button class="basket_responsive_button">
-                <img src="./assets/icon/Property default.svg" alt="">
-            </button>
-            <button class="basket_responsive_button" onclick="openBasketResponsive()">
-                <img src="./assets/icon/shopping_cart.svg" alt="">
-            </button>
+        <div id="responsive_menu" class="menu_responsive responsive_menu_none">
+            
         </div>
 
     </main>
