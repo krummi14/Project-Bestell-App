@@ -8,7 +8,7 @@ function getBurgerDishTemplate(burgerIndex) {
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">
-                    <h4>${formatPrice(myDishes[burgerIndex].price)}</h4>
+                    <h4>${reFormatPrice(myDishes[burgerIndex].price)}</h4>
                     <button id="first_click_on_add_order_button_${burgerIndex}" onclick="addDish(${burgerIndex})" class="add_order_button">Add to basket</button>
                     <div id="added_dish_button_and_amount${burgerIndex}" class="dish_order_buttons_none">
                         <p id="added_information_${burgerIndex}" class="add_order_button_none add_oder_button_newColor add_order_button_width"></p>
@@ -28,7 +28,7 @@ function getPizzaDishTemplate(pizzaIndex) {
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">
-                    <h4>${formatPrice(myDishes[pizzaIndex].price)}</h4>
+                    <h4>${reFormatPrice(myDishes[pizzaIndex].price)}</h4>
                     <button id="first_click_on_add_order_button_${pizzaIndex}" onclick="addDish(${pizzaIndex})" class="add_order_button">Add to basket</button>
                     <div id="added_dish_button_and_amount${pizzaIndex}" class="dish_order_buttons_none">
                         <p id="added_information_${pizzaIndex}" class="add_order_button_none add_oder_button_newColor add_order_button_width"></p>
@@ -48,7 +48,7 @@ function getSaladDishTemplate(saladIndex) {
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">
-                    <h4>${formatPrice(myDishes[saladIndex].price)}</h4>
+                    <h4>${reFormatPrice(myDishes[saladIndex].price)}</h4>
                     <button id="first_click_on_add_order_button_${saladIndex}" onclick="addDish(${saladIndex})" class="add_order_button">Add to basket</button>
                     <div id="added_dish_button_and_amount${saladIndex}" class="dish_order_buttons_none">
                         <p id="added_information_${saladIndex}" class="add_order_button_none add_oder_button_newColor add_order_button_width"></p>
@@ -61,17 +61,17 @@ function getSaladDishTemplate(saladIndex) {
 function getOrderDishTemplate(orderIndex) {
     return `<div id="added_dish_content_${orderIndex}" class="ordered_dish_content">
                 <span class="dish_headline_and_rubbish">
-                    <h4 class="dish_font" id="ordered_dish_amount_${orderIndex}"></h4>
-                    <button id="rubbish_button_onTop_${orderIndex}" onclick="deleteDish(${orderIndex}, 0)" class="dish_font_button_none">&#x1F5D1</button>
+                    <h4 class="dish_font dish_font_maxWidth" id="ordered_dish_amount_${orderIndex}"></h4>
+                    <button id="rubbish_button_onTop_${orderIndex}" onclick="deleteDish(${orderIndex}, 0, 1)" class="dish_font_button_none">&#x1F5D1</button>
                 </span>
                 <span class="render_amount_and_price">
                     <div class="render_amount">
-                        <button id="rubbish_button_${orderIndex}" onclick="deleteDish(${orderIndex}, 0)" class="dish_font_button_none">&#x1F5D1</button>
+                        <button id="rubbish_button_${orderIndex}" onclick="deleteDish(${orderIndex}, 0, 1)" class="dish_font_button_none">&#x1F5D1</button>
                         <button id="less_button_${orderIndex}" onclick="addDish(${orderIndex}, 0)" class="dish_font_button">-</button>
                         <p id="dish_amount_${orderIndex}" class="dish_font"></p>
                         <button onclick="addDish(${orderIndex}, 1)" class="dish_font_button">+</button>
                     </div>
-                    <p class="dish_font">${formatPrice(myDishes[orderIndex].price)}</p>
+                    <p class="dish_font">${reFormatPrice(myDishes[orderIndex].price)}</p>
                 </span>
             </div>`
 }

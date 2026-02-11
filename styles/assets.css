@@ -238,12 +238,7 @@ input:checked+.slider:before {
     display: none;
 }
 
-.close_button_content {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    width: 100%;
-}
+
 
 .home_button_responsive {
     background-image: url('../assets/icon/home.svg');
@@ -347,6 +342,13 @@ input:checked+.slider:before {
 
     .order_button_content {
         padding: 0 0;
+    }
+
+    .close_button_content {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 100%;
     }
 
     .close_button_none {

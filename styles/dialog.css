@@ -31,13 +31,13 @@
 }
 
 .dialog_order_content.dialog_closed {
-    opacity: 0;
+    display: none;
     transform: translate(-50%, -50%) translateX(-100px);
     transition: all 125ms ease-in;
 }
 
 .dialog_order_content.dialog_closed::backdrop {
-    opacity: 0;
+    display: none;
 }
 
 .dialog_main_content {

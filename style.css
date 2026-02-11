@@ -173,9 +173,11 @@
 /* style of dish_content_wrapper */
 .dish_content_wrapper {
     position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
-.dish_content_wrapper_maxWidth {
+.basket_wrapper_maxWidth {
     max-width: 1440px;
     margin: 0 auto;
 }
@@ -198,8 +200,8 @@
     right: 0;
     border-top-left-radius: 16px;
     border-bottom-left-radius: 16px;
-    padding-top: 40px;
-    padding-bottom: 32px;
+    padding-top: 24px;
+    padding-bottom: 24px;
 }
 
 .dish_headline_and_rubbish {
@@ -211,7 +213,7 @@
 }
 
 .basket_wrapper {
-    height: 100%;
+    height: 105%;
     width: 420px;
     position: absolute;
     top: 0;
@@ -220,7 +222,7 @@
 
 .order_list {
     width: 100%;
-    max-height: 480px;
+    max-height: 395px;
     overflow-y: auto;
 }
 
@@ -253,7 +255,7 @@
     align-items: center;
     justify-content: center;
     gap: 16px;
-    margin-top: 24px;
+    margin-top: 16px;
 }
 
 .delivery_or_pickUp_label_font {
@@ -275,9 +277,13 @@
 }
 
 .ordered_dish_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: rgba(253, 234, 220, 1);
     border-radius: 20px;
     border: none;
+    height: 160px;
     width: 320px;
     padding: 16px;
 }
@@ -285,6 +291,11 @@
 .dish_font {
     font-size: 22px;
     font-weight: bold;
+    line-height: 1.5;
+}
+
+.dish_font_maxWidth {
+    width: 80%;
 }
 
 table {
@@ -294,7 +305,7 @@ table {
     width: 100%;
     padding-left: 24px;
     padding-right: 56px;
-    margin: 24px 0;
+    margin: 16px 0;
 }
 
 .text_left {
@@ -343,7 +354,7 @@ table {
         top: 0;
         left: 0;
         width: 100%;
-        height: 92%;
+        height: 90%;
         z-index: 2;
         padding-left: 16px;
         padding-right: 16px;
@@ -374,7 +385,7 @@ table {
     }
 
     .order_list {
-        max-height: 360px;
+        max-height: 180px;
     }
 
     .total_amount_basket {
@@ -399,10 +410,14 @@ table {
 /* style of dish content */
 .dish_headline {
     position: relative;
+    left: 50%;
+    right: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
     background-color: rgba(231, 108, 31, 1);
     padding-left: 80px;
     padding-right: 32px;
-    width: 100%;
 }
 
 .dishes_maxWidth {
@@ -531,6 +546,7 @@ table {
         margin-left: 8px;
     }
 }
+
 /* end of dish content */
 
 /* style of responsive menu */
@@ -558,6 +574,7 @@ table {
         position: sticky;
     }
 }
+
 /* end of responsive menu */
 
 /* style of footer */
@@ -594,4 +611,5 @@ footer {
         font-size: 18px;
     }
 }
+
 /*end of footer-style */
