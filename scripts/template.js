@@ -12,7 +12,7 @@ function getBurgerDishTemplate(burgerIndex) {
                     <button id="first_click_on_add_order_button_${burgerIndex}" onclick="addDish(${burgerIndex})" class="add_order_button">Add to basket</button>
                     <div id="added_dish_button_and_amount${burgerIndex}" class="dish_order_buttons_none">
                         <p id="added_information_${burgerIndex}" class="add_order_button_none add_oder_button_newColor add_order_button_width"></p>
-                        <button id="plus_order_button_${burgerIndex}" onclick="addDish(${burgerIndex}, 1)" class="add_order_button_none add_oder_button_newColor add_order_button_noWidth">+</button>
+                        <button id="plus_order_button_${burgerIndex}" onclick="addDish(${burgerIndex}, 1)" class="add_order_button_none add_oder_button_newColor add_order_button_noWidth plus_order_button_size">+</button>
                     </div>
                 </div>
             </article>`;
@@ -32,7 +32,7 @@ function getPizzaDishTemplate(pizzaIndex) {
                     <button id="first_click_on_add_order_button_${pizzaIndex}" onclick="addDish(${pizzaIndex})" class="add_order_button">Add to basket</button>
                     <div id="added_dish_button_and_amount${pizzaIndex}" class="dish_order_buttons_none">
                         <p id="added_information_${pizzaIndex}" class="add_order_button_none add_oder_button_newColor add_order_button_width"></p>
-                        <button id="plus_order_button_${pizzaIndex}" onclick="addDish(${pizzaIndex}, 1)" class="add_order_button_none add_oder_button_newColor add_order_button_noWidth">+</button>
+                        <button id="plus_order_button_${pizzaIndex}" onclick="addDish(${pizzaIndex}, 1)" class="add_order_button_none add_oder_button_newColor add_order_button_noWidth plus_order_button_size">+</button>
                     </div>
                 </div>
             </article>`;
@@ -52,7 +52,7 @@ function getSaladDishTemplate(saladIndex) {
                     <button id="first_click_on_add_order_button_${saladIndex}" onclick="addDish(${saladIndex})" class="add_order_button">Add to basket</button>
                     <div id="added_dish_button_and_amount${saladIndex}" class="dish_order_buttons_none">
                         <p id="added_information_${saladIndex}" class="add_order_button_none add_oder_button_newColor add_order_button_width"></p>
-                        <button id="plus_order_button_${saladIndex}" onclick="addDish(${saladIndex}, 1)" class="add_order_button_none add_oder_button_newColor add_order_button_noWidth">+</button>
+                        <button id="plus_order_button_${saladIndex}" onclick="addDish(${saladIndex}, 1)" class="add_order_button_none add_oder_button_newColor add_order_button_noWidth plus_order_button_size">+</button>
                     </div>
                 </div>
             </article>`;

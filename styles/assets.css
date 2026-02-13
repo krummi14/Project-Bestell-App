@@ -90,6 +90,14 @@
     padding: 8px;
 }
 
+.plus_order_button_size {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    width: 36px;
+}
+
 .add_order_button:hover {
     color: rgba(231, 108, 31, 1);
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
@@ -106,10 +114,6 @@
 
 .add_order_button_width {
     width: 80px;
-}
-
-.add_order_button_noWidth {
-    width: auto;
 }
 
 .dish_order_buttons_none {

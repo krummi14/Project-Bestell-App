@@ -15,7 +15,7 @@ let newTotalPrice = 0;
 let switchCondition = 0;
 
 function init() {
-    renderDishes();
+    renderAllDishes();
     addRespoMenu();
 }
 
@@ -23,33 +23,22 @@ function reFormatPrice(price) {
     return price.toFixed(2).replace(".", ",") + "€";
 }
 
-function renderDishes() {
-    renderBurgers();
-    renderPizza();
-    renderSalad();
+function addAndRemoveClassHelperFunction(contentAdd, idADD, contentRemove, idRemove) {
+    contentAdd.classList.add(idADD);
+    contentRemove.classList.remove(idRemove);
 }
 
-function renderBurgers() {
-    contentBurger.innerHTML = "";
-
-    for (let burgerIndex = 0; burgerIndex < 4; burgerIndex++) {
-        contentBurger.innerHTML += getBurgerDishTemplate(burgerIndex);
-    }
+function renderAllDishes() {
+    renderDishes(contentBurger, 0, 4);
+    renderDishes(contentPizza, 4, 8);
+    renderDishes(contentSalad, 8, myDishes.length);
 }
 
-function renderPizza() {
-    contentPizza.innerHTML = "";
+function renderDishes(content, startFor, stopFor) {
+    content.innerHTML = "";
 
-    for (let pizzaIndex = 4; pizzaIndex < 8; pizzaIndex++) {
-        contentPizza.innerHTML += getPizzaDishTemplate(pizzaIndex);
-    }
-}
-
-function renderSalad() {
-    contentSalad.innerHTML = "";
-
-    for (let saladIndex = 8; saladIndex < myDishes.length; saladIndex++) {
-        contentSalad.innerHTML += getSaladDishTemplate(saladIndex);
+    for (let dishIndex = startFor; dishIndex < stopFor; dishIndex++) {
+        content.innerHTML += getBurgerDishTemplate(dishIndex);
     }
 }
 
@@ -106,15 +95,18 @@ function addDish(orderIndex, condition, rubbish) {
     }
 
     else {
-        calculateDishPrice(orderIndex, condition, rubbish);
-        calculateAmount(orderIndex, condition);
-        addClassRubbish(orderIndex, condition);
-        changeClass(orderIndex)
-        updateBasketAmount();
-        classShoppingCartResponisveCount();
+        addDishHelperFunction(orderIndex, condition, rubbish);
     }
     basketWithDishes(orderIndex);
+}
 
+function addDishHelperFunction(orderIndex, condition, rubbish) {
+    calculateDishPrice(orderIndex, condition, rubbish);
+    calculateAmount(orderIndex, condition);
+    addClassRubbish(orderIndex, condition);
+    changeClass(orderIndex)
+    updateBasketAmount();
+    classShoppingCartResponisveCount();
 }
 
 function deleteDish(orderIndex, condition, rubbish) {
@@ -148,21 +140,13 @@ function calculateAmount(orderIndex, condition) {
 
 function getCurrentPrices() {
     return {
-        currentSubTotal : parseFloat(contentDishPrice.innerText.replace(",", ".")),
-        currentTotalPrice : parseFloat(contentTableTotalPrice.innerText.replace(",", ".")),
-        currentDeliveryFee : parseFloat(contentDeliveryFee.innerText.replace(",", ".")),
+        currentSubTotal: parseFloat(contentDishPrice.innerText.replace(",", ".")),
+        currentTotalPrice: parseFloat(contentTableTotalPrice.innerText.replace(",", ".")),
+        currentDeliveryFee: parseFloat(contentDeliveryFee.innerText.replace(",", ".")),
     }
 }
 
-function writeIntoContent(newDishPriceParam, newTotalPriceParam) {
-    contentDishPrice.innerText = reFormatPrice(newDishPriceParam);
-    contentTotalPrice.innerText = "(" + reFormatPrice(newTotalPriceParam) + ")";
-    contentTableTotalPrice.innerText = reFormatPrice(newTotalPriceParam);
-}
-
-console.log(getCurrentPrices());
-
-function calculateDishPrice(orderIndex, condition, rubbish) {
+function getNewPrices(condition, orderIndex, rubbish) {
     let dishPrice = parseFloat(myDishes[orderIndex].price);
     let prices = getCurrentPrices();
 
@@ -180,7 +164,16 @@ function calculateDishPrice(orderIndex, condition, rubbish) {
         newDishPrice = prices.currentSubTotal + dishPrice;
         newTotalPrice = prices.currentTotalPrice + dishPrice;
     }
+}
 
+function writeIntoContent(newDishPriceParam, newTotalPriceParam) {
+    contentDishPrice.innerText = reFormatPrice(newDishPriceParam);
+    contentTotalPrice.innerText = "(" + reFormatPrice(newTotalPriceParam) + ")";
+    contentTableTotalPrice.innerText = reFormatPrice(newTotalPriceParam);
+}
+
+function calculateDishPrice(orderIndex, condition, rubbish) {
+    getNewPrices(condition, orderIndex, rubbish);
     writeIntoContent(newDishPrice, newTotalPrice);
 }
 
@@ -204,42 +197,53 @@ function calculateNewDishPrice() {
     writeIntoContent(newDishPrice, newTotalPrice);
 }
 
-function addAndRemoveClass(firstClickonButton, contentAddedDish, addedInformation, contentPlusButton) {
-    firstClickonButton.classList.add('add_order_button');
-    contentAddedDish.classList.add('dish_order_buttons_none');
-    addedInformation.classList.remove('add_order_button_added');
-    contentPlusButton.classList.remove('add_order_button');
-
-    firstClickonButton.classList.remove('add_order_button_none');
-    contentAddedDish.classList.remove('dish_order_buttons');
-    addedInformation.classList.add('add_order_button_none');
-    contentPlusButton.classList.add('add_order_button_none');
-}
-
-function removeAndAddClass(firstClickonButton, contentAddedDish, addedInformation, contentPlusButton) {
-    firstClickonButton.classList.remove('add_order_button');
-    contentAddedDish.classList.remove('dish_order_buttons_none');
-    addedInformation.classList.add('add_order_button_added');
-    contentPlusButton.classList.add('add_order_button');
-
-    firstClickonButton.classList.add('add_order_button_none');
-    contentAddedDish.classList.add('dish_order_buttons');
-    addedInformation.classList.remove('add_order_button_none');
-    contentPlusButton.classList.remove('add_order_button_none');
-}
-
-function changeClass(orderIndex) {
+function addAndRemoveClassEmpty(orderIndex) {
     let firstClickonButton = document.getElementById(`first_click_on_add_order_button_${orderIndex}`);
     let addedInformation = document.getElementById(`added_information_${orderIndex}`);
     let contentPlusButton = document.getElementById(`plus_order_button_${orderIndex}`);
     let contentAddedDish = document.getElementById(`added_dish_button_and_amount${orderIndex}`);
 
+    addAndRemoveClassHelperFunction(firstClickonButton, 'add_order_button', addedInformation, 'add_order_button_added');
+    addAndRemoveClassHelperFunction(addedInformation, 'add_order_button_none', firstClickonButton, 'add_order_button_none');
+    addAndRemoveClassHelperFunction(contentAddedDish, 'dish_order_buttons_none', contentPlusButton, 'add_order_button');
+    addAndRemoveClassHelperFunction(contentPlusButton, 'add_order_button_none', contentAddedDish, 'dish_order_buttons');
+}
+
+function addAndRemoveClassFull(orderIndex) {
+    let firstClickonButton = document.getElementById(`first_click_on_add_order_button_${orderIndex}`);
+    let addedInformation = document.getElementById(`added_information_${orderIndex}`);
+    let contentPlusButton = document.getElementById(`plus_order_button_${orderIndex}`);
+    let contentAddedDish = document.getElementById(`added_dish_button_and_amount${orderIndex}`);
+
+    addAndRemoveClassHelperFunction(addedInformation, 'add_order_button_added', firstClickonButton, 'add_order_button');
+    addAndRemoveClassHelperFunction(firstClickonButton, 'add_order_button_none', addedInformation, 'add_order_button_none');
+    addAndRemoveClassHelperFunction(contentPlusButton, 'add_order_button', contentAddedDish, 'dish_order_buttons_none');
+    addAndRemoveClassHelperFunction(contentAddedDish, 'dish_order_buttons', contentPlusButton, 'add_order_button_none');
+}
+
+function changeClass(orderIndex) {
     if (myDishes[orderIndex].amount == 0) {
-        addAndRemoveClass(firstClickonButton, contentAddedDish, addedInformation, contentPlusButton);
+        addAndRemoveClassEmpty(orderIndex);
     }
 
     else {
-        removeAndAddClass(firstClickonButton, contentAddedDish, addedInformation, contentPlusButton)
+        addAndRemoveClassFull(orderIndex);
+    }
+}
+
+function resetAllDishButtons() {
+    for (let i = 0; i < myDishes.length; i++) {
+        let firstClickonButton = document.getElementById(`first_click_on_add_order_button_${i}`);
+        let addedInformation = document.getElementById(`added_information_${i}`);
+        let contentPlusButton = document.getElementById(`plus_order_button_${i}`);
+        let contentAddedDish = document.getElementById(`added_dish_button_and_amount${i}`);
+
+        addAndRemoveClassHelperFunction(firstClickonButton, 'add_order_button', firstClickonButton, 'add_order_button_none');
+        addAndRemoveClassHelperFunction(contentAddedDish, 'dish_order_buttons_none', contentAddedDish, 'dish_order_buttons');
+        addAndRemoveClassHelperFunction(addedInformation, 'add_order_button_none', addedInformation, 'add_order_button_added');
+        addAndRemoveClassHelperFunction(contentPlusButton, 'add_order_button_none', contentPlusButton, 'add_order_button');
+
+        myDishes[i].amount = 0;
     }
 }
 
@@ -249,16 +253,12 @@ function addClassRubbish(orderIndex, condition) {
     let contentRubbishButtonOnTop = document.getElementById(`rubbish_button_onTop_${orderIndex}`);
 
     if (condition == 0 && myDishes[orderIndex].amount == 1) {
-        contentRubbishButton.classList.remove('dish_font_button_none');
-        contentRubbishButton.classList.add('dish_font_button');
-
-        contentLessButton.classList.remove('dish_font_button');
-        contentLessButton.classList.add('dish_font_button_none');
+        addAndRemoveClassHelperFunction(contentRubbishButton, 'dish_font_button', contentRubbishButton, 'dish_font_button_none');
+        addAndRemoveClassHelperFunction(contentLessButton, 'dish_font_button_non', contentLessButton, 'dish_font_button');
     }
 
     else if (condition == 1 && myDishes[orderIndex].amount > 1) {
-        contentRubbishButtonOnTop.classList.remove('dish_font_button_none');
-        contentRubbishButtonOnTop.classList.add('dish_font_button');
+        addAndRemoveClassHelperFunction(contentRubbishButtonOnTop, 'dish_font_button', contentRubbishButtonOnTop, 'dish_font_button_none');
     }
 }
 
@@ -267,8 +267,6 @@ function deliverySwitch() {
         contentDeliveryFee.innerText = "4,99€";
         switchCondition = 1;
     }
-
-
     else {
         contentDeliveryFee.innerText = "0,00€";
         switchCondition = 0;
@@ -278,23 +276,47 @@ function deliverySwitch() {
 }
 
 function openDialogOrder() {
+    let totalPrice = parseFloat(contentTableTotalPrice.innerText.replace(",", "."));
+    totalPrice = 0;
+
+    writeIntoContent(0, 0);
+
     contentDialog.showModal();
-    contentDialog.classList.add("dialog_opend");
-    contentDialog.classList.remove("dialog_closed");
+    addAndRemoveClassHelperFunction(contentDialog, 'dialog_opend', contentDialog, 'dialog_closed');
     contentBasket.classList.add("basket_closed");
 
     setTimeout(function () {
-        contentDialog.remove();
-    }, 10000)
+        closeDialogOrder();
+    }, 2000)
 }
 
 function closeDialogOrder() {
-    contentDialog.classList.remove("dialog_opend");
-    contentDialog.classList.add("dialog_closed");
+    let totalPrice = parseFloat(contentTableTotalPrice.innerText.replace(",", "."));
+    totalPrice = 0;
+
+    resetBasket();
+    basketWithDishes();
+    resetAllDishButtons();
+    closeBasketResponsive();
 
     setTimeout(function () {
         contentDialog.close();
     }, 125);
+}
+
+function resetBasket() {
+    let contentNumberTotalAmount = document.getElementById('number_total_amount_basket');
+    let totalAmount = 0
+    contentNumberTotalAmount.innerText = totalAmount;
+
+    for (let index = 0; index < myDishes.length; index++) {
+        let contentAddedDish = document.getElementById(`added_dish_content_${index}`);
+        if (contentAddedDish) {
+            contentAddedDish.remove();
+        }
+    }
+    addAndRemoveClassHelperFunction(contentDialog, 'dialog_closed', contentDialog, 'dialog_opend');
+    contentBasket.classList.remove("basket_closed");
 }
 
 function openBasketResponsive() {
@@ -305,22 +327,31 @@ function closeBasketResponsive() {
     contentBasket.classList.add('responsive_basket_none');
 }
 
-function classShoppingCartResponisveCount() {
+function addAndRemoveClassAmountNull() {
     let contentShoppiCartButton = document.getElementById('shopping_cart_button');
+    let contentNumberTotalAmount = document.getElementById('number_total_amount_basket');
+
+    addAndRemoveClassHelperFunction(contentShoppiCartButton, 'shopping_button_responsive', contentShoppiCartButton, 'shopping_button_responsive_count');
+    addAndRemoveClassHelperFunction(contentNumberTotalAmount, 'total_amount_basket_none', contentNumberTotalAmount, 'total_amount_basket');
+}
+
+function addAndRemoveClassAmountBiggerNull() {
+    let contentShoppiCartButton = document.getElementById('shopping_cart_button');
+    let contentNumberTotalAmount = document.getElementById('number_total_amount_basket');
+
+    addAndRemoveClassHelperFunction(contentShoppiCartButton, 'shopping_button_responsive_count', contentShoppiCartButton, 'shopping_button_responsive');
+    addAndRemoveClassHelperFunction(contentNumberTotalAmount, 'total_amount_basket', contentNumberTotalAmount, 'total_amount_basket_none');
+}
+
+function classShoppingCartResponisveCount() {
     let contentNumberTotalAmount = document.getElementById('number_total_amount_basket');
     let totalAmount = contentNumberTotalAmount.innerText;
 
     if (totalAmount == 0) {
-        contentShoppiCartButton.classList.add('shopping_button_responsive');
-        contentShoppiCartButton.classList.remove('shopping_button_responsive_count');
-        contentNumberTotalAmount.classList.remove('total_amount_basket');
-        contentNumberTotalAmount.classList.add('total_amount_basket_none');
+        addAndRemoveClassAmountNull()
     }
 
     else {
-        contentShoppiCartButton.classList.remove('shopping_button_responsive');
-        contentShoppiCartButton.classList.add('shopping_button_responsive_count');
-        contentNumberTotalAmount.classList.add('total_amount_basket');
-        contentNumberTotalAmount.classList.remove('total_amount_basket_none');
+        addAndRemoveClassAmountBiggerNull()
     }
 }
