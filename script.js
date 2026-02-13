@@ -49,8 +49,8 @@ function addRespoMenu() {
 
 function updateBasketAmount() {
     let totalAmount = calculateAmountBasket();
-    let contentNumberTotalAmount = document.getElementById('number_total_amount_basket');
 
+    let contentNumberTotalAmount = document.getElementById('number_total_amount_basket');
     if (contentNumberTotalAmount) {
         contentNumberTotalAmount.innerText = totalAmount;
     }
@@ -58,16 +58,15 @@ function updateBasketAmount() {
 
 function calculateAmountBasket() {
     let totalAmount = 0
+
     for (let amountIndex = 0; amountIndex < myDishes.length; amountIndex++) {
         totalAmount = totalAmount + myDishes[amountIndex].amount;
     }
-
     return totalAmount;
 }
 
 function basketWithDishes() {
     let totalPrice = contentTableTotalPrice.innerText.replace(",", ".");
-
     totalPrice = parseFloat(totalPrice);
 
     if (totalPrice == 0) {
@@ -75,9 +74,7 @@ function basketWithDishes() {
         contentBasketEmpty.classList.add('basket_empty_info');
         contentBasketFull.classList.add('basket_empty_to_full');
         classShoppingCartResponisveCount();
-    }
-
-    else {
+    } else {
         contentBasketEmpty.classList.add('basket_empty_to_full');
         contentBasketEmpty.classList.remove('basket_empty_info');
         contentBasketFull.classList.remove('basket_empty_to_full');
@@ -88,13 +85,9 @@ function addDish(orderIndex, condition, rubbish) {
     let contentOrder = document.getElementById('order_content');
     if (myDishes[orderIndex].amount == 0) {
         contentOrder.innerHTML += getOrderDishTemplate(orderIndex);
-    }
-
-    if (condition == 0 && myDishes[orderIndex].amount == 1) {
+    } if (condition == 0 && myDishes[orderIndex].amount == 1) {
         addClassRubbish(orderIndex, condition);
-    }
-
-    else {
+    } else {
         addDishHelperFunction(orderIndex, condition, rubbish);
     }
     basketWithDishes(orderIndex);
@@ -112,7 +105,6 @@ function addDishHelperFunction(orderIndex, condition, rubbish) {
 function deleteDish(orderIndex, condition, rubbish) {
     let contentAddedDish = document.getElementById(`added_dish_content_${orderIndex}`);
     contentAddedDish.remove();
-
     calculateDishPrice(orderIndex, condition, rubbish);
     myDishes[orderIndex].amount = 0;
     changeClass(orderIndex);
@@ -127,9 +119,7 @@ function calculateAmount(orderIndex, condition) {
 
     if (condition == 0) {
         myDishes[orderIndex].amount--;
-    }
-
-    else {
+    } else {
         myDishes[orderIndex].amount++;
     }
 
@@ -153,14 +143,11 @@ function getNewPrices(condition, orderIndex, rubbish) {
     if (condition == 0) {
         newDishPrice = prices.currentSubTotal - dishPrice;
         newTotalPrice = prices.currentTotalPrice - dishPrice;
-
         if (myDishes[orderIndex].amount >= 1 && rubbish == 1) {
             newDishPrice = prices.currentSubTotal - (dishPrice * myDishes[orderIndex].amount);
             newTotalPrice = prices.currentTotalPrice - (dishPrice * myDishes[orderIndex].amount);
         }
-    }
-
-    else {
+    } else {
         newDishPrice = prices.currentSubTotal + dishPrice;
         newTotalPrice = prices.currentTotalPrice + dishPrice;
     }
@@ -183,13 +170,10 @@ function calculateNewDishPrice() {
     if (prices.currentSubTotal == 0) {
         newTotalPrice = prices.currentTotalPrice + prices.currentDeliveryFee;
         contentDishPrice.innerText = reFormatPrice(newDishPrice);
-
         if (prices.currentDeliveryFee == 0) {
             newTotalPrice = prices.currentSubTotal + prices.currentDeliveryFee;
         }
-    }
-
-    else {
+    } else {
         newTotalPrice = prices.currentSubTotal + prices.currentDeliveryFee;
         contentDishPrice.innerText = reFormatPrice(prices.currentSubTotal);
     }
@@ -224,9 +208,7 @@ function addAndRemoveClassFull(orderIndex) {
 function changeClass(orderIndex) {
     if (myDishes[orderIndex].amount == 0) {
         addAndRemoveClassEmpty(orderIndex);
-    }
-
-    else {
+    } else {
         addAndRemoveClassFull(orderIndex);
     }
 }
@@ -255,9 +237,7 @@ function addClassRubbish(orderIndex, condition) {
     if (condition == 0 && myDishes[orderIndex].amount == 1) {
         addAndRemoveClassHelperFunction(contentRubbishButton, 'dish_font_button', contentRubbishButton, 'dish_font_button_none');
         addAndRemoveClassHelperFunction(contentLessButton, 'dish_font_button_non', contentLessButton, 'dish_font_button');
-    }
-
-    else if (condition == 1 && myDishes[orderIndex].amount > 1) {
+    } else if (condition == 1 && myDishes[orderIndex].amount > 1) {
         addAndRemoveClassHelperFunction(contentRubbishButtonOnTop, 'dish_font_button', contentRubbishButtonOnTop, 'dish_font_button_none');
     }
 }
@@ -266,8 +246,7 @@ function deliverySwitch() {
     if (switchCondition == 0) {
         contentDeliveryFee.innerText = "4,99€";
         switchCondition = 1;
-    }
-    else {
+    } else {
         contentDeliveryFee.innerText = "0,00€";
         switchCondition = 0;
     }
@@ -280,11 +259,9 @@ function openDialogOrder() {
     totalPrice = 0;
 
     writeIntoContent(0, 0);
-
     contentDialog.showModal();
     addAndRemoveClassHelperFunction(contentDialog, 'dialog_opend', contentDialog, 'dialog_closed');
     contentBasket.classList.add("basket_closed");
-
     setTimeout(function () {
         closeDialogOrder();
     }, 2000)
@@ -298,7 +275,6 @@ function closeDialogOrder() {
     basketWithDishes();
     resetAllDishButtons();
     closeBasketResponsive();
-
     setTimeout(function () {
         contentDialog.close();
     }, 125);
@@ -349,9 +325,7 @@ function classShoppingCartResponisveCount() {
 
     if (totalAmount == 0) {
         addAndRemoveClassAmountNull()
-    }
-
-    else {
+    } else {
         addAndRemoveClassAmountBiggerNull()
     }
 }
