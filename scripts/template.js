@@ -1,58 +1,18 @@
-function getBurgerDishTemplate(burgerIndex) {
+function getDishesTemplate(dishIndex) {
     return `<article class="dish">
                 <figure class="dish_img_and_description">
-                    <img class="dish_img" src="${myDishes[burgerIndex].img}">
+                    <img class="dish_img" src="${myDishes[dishIndex].img}">
                     <figcaption class="dish_recipe">
-                        <h4>${myDishes[burgerIndex].name}</h4>
-                        <p class="dish_recipe_text">${myDishes[burgerIndex].description}</p>
+                        <h4>${myDishes[dishIndex].name}</h4>
+                        <p class="dish_recipe_text">${myDishes[dishIndex].description}</p>
                     </figcaption>
                 </figure>
                 <div class="dish_price_and_addButton">
-                    <h4>${reFormatPrice(myDishes[burgerIndex].price)}</h4>
-                    <button id="first_click_on_add_order_button_${burgerIndex}" onclick="addDish(${burgerIndex})" class="add_order_button">Add to basket</button>
-                    <div id="added_dish_button_and_amount${burgerIndex}" class="dish_order_buttons_none">
-                        <p id="added_information_${burgerIndex}" class="add_order_button_none add_oder_button_newColor add_order_button_width"></p>
-                        <button id="plus_order_button_${burgerIndex}" onclick="addDish(${burgerIndex}, 1)" class="add_order_button_none add_oder_button_newColor add_order_button_noWidth plus_order_button_size">+</button>
-                    </div>
-                </div>
-            </article>`;
-}
-
-function getPizzaDishTemplate(pizzaIndex) {
-    return `<article class="dish">
-                <figure class="dish_img_and_description">
-                    <img class="dish_img dish_img_position_${pizzaIndex}" src="${myDishes[pizzaIndex].img}">
-                    <figcaption class="dish_recipe">
-                        <h4>${myDishes[pizzaIndex].name}</h4>
-                        <p class="dish_recipe_text">${myDishes[pizzaIndex].description}</p>
-                    </figcaption>
-                </figure>
-                <div class="dish_price_and_addButton">
-                    <h4>${reFormatPrice(myDishes[pizzaIndex].price)}</h4>
-                    <button id="first_click_on_add_order_button_${pizzaIndex}" onclick="addDish(${pizzaIndex})" class="add_order_button">Add to basket</button>
-                    <div id="added_dish_button_and_amount${pizzaIndex}" class="dish_order_buttons_none">
-                        <p id="added_information_${pizzaIndex}" class="add_order_button_none add_oder_button_newColor add_order_button_width"></p>
-                        <button id="plus_order_button_${pizzaIndex}" onclick="addDish(${pizzaIndex}, 1)" class="add_order_button_none add_oder_button_newColor add_order_button_noWidth plus_order_button_size">+</button>
-                    </div>
-                </div>
-            </article>`;
-}
-
-function getSaladDishTemplate(saladIndex) {
-    return `<article class="dish">
-                <figure class="dish_img_and_description">
-                    <img class="dish_img" src="${myDishes[saladIndex].img}">
-                    <figcaption class="dish_recipe">
-                        <h4>${myDishes[saladIndex].name}</h4>
-                        <p class="dish_recipe_text">${myDishes[saladIndex].description}</p>
-                    </figcaption>
-                </figure>
-                <div class="dish_price_and_addButton">
-                    <h4>${reFormatPrice(myDishes[saladIndex].price)}</h4>
-                    <button id="first_click_on_add_order_button_${saladIndex}" onclick="addDish(${saladIndex})" class="add_order_button">Add to basket</button>
-                    <div id="added_dish_button_and_amount${saladIndex}" class="dish_order_buttons_none">
-                        <p id="added_information_${saladIndex}" class="add_order_button_none add_oder_button_newColor add_order_button_width"></p>
-                        <button id="plus_order_button_${saladIndex}" onclick="addDish(${saladIndex}, 1)" class="add_order_button_none add_oder_button_newColor add_order_button_noWidth plus_order_button_size">+</button>
+                    <h4>${reFormatPrice(myDishes[dishIndex].price)}</h4>
+                    <button id="first_click_on_add_order_button_${dishIndex}" onclick="addDish(${dishIndex})" class="add_order_button">Add to basket</button>
+                    <div id="added_dish_button_and_amount${dishIndex}" class="dish_order_buttons_none">
+                        <p id="added_information_${dishIndex}" class="add_order_button_none add_oder_button_newColor add_order_button_width"></p>
+                        <button id="plus_order_button_${dishIndex}" onclick="addDish(${dishIndex}, 1)" class="add_order_button_none add_oder_button_newColor add_order_button_noWidth plus_order_button_size">+</button>
                     </div>
                 </div>
             </article>`;

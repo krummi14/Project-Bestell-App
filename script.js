@@ -30,15 +30,22 @@ function addAndRemoveClassHelperFunction(contentAdd, idADD, contentRemove, idRem
 }
 
 function renderAllDishes() {
-    renderDishes(contentBurger, 0, 4);
-    renderDishes(contentPizza, 4, 8);
-    renderDishes(contentSalad, 8, myDishes.length);
+    const categories = [
+        [contentBurger, 0, 4],
+        [contentPizza, 4, 8],   
+        [contentSalad, 8, myDishes.length]
+    ];
+
+    for (let [content, start, end] of categories) {
+        renderDishes(content, start, end);
+    }
 }
+
 
 function renderDishes(content, startFor, stopFor) {
     content.innerHTML = "";
     for (let dishIndex = startFor; dishIndex < stopFor; dishIndex++) {
-        content.innerHTML += getBurgerDishTemplate(dishIndex);
+        content.innerHTML += getDishesTemplate(dishIndex);
     }
 }
 
