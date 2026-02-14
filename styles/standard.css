@@ -10,7 +10,6 @@ body {
     flex-direction: column;
     height: 100%;
     font-family: 'Palanquin', sans-serif;
-    overflow-x: hidden;
 }
 
 main {
@@ -53,6 +52,11 @@ h4 {
 }
 
 @media(min-width: 320px) and (max-width: 1200px) {
+    .scroll_lock {
+        overflow: hidden;
+        height: 100%;
+    }
+    
     h1 {
         font-size: 40px;
     }

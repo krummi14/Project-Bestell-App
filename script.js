@@ -10,6 +10,7 @@ let contentTableTotalPrice = document.getElementById('total_table_price');
 let contentDeliveryFee = document.getElementById('delivery_fee');
 let contentBasketEmpty = document.getElementById('basket_empty');
 let contentBasketFull = document.getElementById('basket_full');
+let contentBody = document.body;
 let newDishPrice = 0;
 let newTotalPrice = 0;
 let switchCondition = 0;
@@ -36,7 +37,6 @@ function renderAllDishes() {
 
 function renderDishes(content, startFor, stopFor) {
     content.innerHTML = "";
-
     for (let dishIndex = startFor; dishIndex < stopFor; dishIndex++) {
         content.innerHTML += getBurgerDishTemplate(dishIndex);
     }
@@ -49,7 +49,6 @@ function addRespoMenu() {
 
 function updateBasketAmount() {
     let totalAmount = calculateAmountBasket();
-
     let contentNumberTotalAmount = document.getElementById('number_total_amount_basket');
     if (contentNumberTotalAmount) {
         contentNumberTotalAmount.innerText = totalAmount;
@@ -58,7 +57,6 @@ function updateBasketAmount() {
 
 function calculateAmountBasket() {
     let totalAmount = 0
-
     for (let amountIndex = 0; amountIndex < myDishes.length; amountIndex++) {
         totalAmount = totalAmount + myDishes[amountIndex].amount;
     }
@@ -68,7 +66,6 @@ function calculateAmountBasket() {
 function basketWithDishes() {
     let totalPrice = contentTableTotalPrice.innerText.replace(",", ".");
     totalPrice = parseFloat(totalPrice);
-
     if (totalPrice == 0) {
         contentBasketEmpty.classList.remove('basket_empty_to_full');
         contentBasketEmpty.classList.add('basket_empty_info');
@@ -116,7 +113,6 @@ function calculateAmount(orderIndex, condition) {
     let contentAmount = document.getElementById(`dish_amount_${orderIndex}`);
     let contentOrderedDishAmount = document.getElementById(`ordered_dish_amount_${orderIndex}`);
     let contentButtonAmount = document.getElementById(`added_information_${orderIndex}`);
-
     if (condition == 0) {
         myDishes[orderIndex].amount--;
     } else {
@@ -139,7 +135,6 @@ function getCurrentPrices() {
 function getNewPrices(condition, orderIndex, rubbish) {
     let dishPrice = parseFloat(myDishes[orderIndex].price);
     let prices = getCurrentPrices();
-
     if (condition == 0) {
         newDishPrice = prices.currentSubTotal - dishPrice;
         newTotalPrice = prices.currentTotalPrice - dishPrice;
@@ -166,7 +161,6 @@ function calculateDishPrice(orderIndex, condition, rubbish) {
 
 function calculateNewDishPrice() {
     let prices = getCurrentPrices();
-
     if (prices.currentSubTotal == 0) {
         newTotalPrice = prices.currentTotalPrice + prices.currentDeliveryFee;
         contentDishPrice.innerText = reFormatPrice(newDishPrice);
@@ -186,7 +180,6 @@ function addAndRemoveClassEmpty(orderIndex) {
     let addedInformation = document.getElementById(`added_information_${orderIndex}`);
     let contentPlusButton = document.getElementById(`plus_order_button_${orderIndex}`);
     let contentAddedDish = document.getElementById(`added_dish_button_and_amount${orderIndex}`);
-
     addAndRemoveClassHelperFunction(firstClickonButton, 'add_order_button', addedInformation, 'add_order_button_added');
     addAndRemoveClassHelperFunction(addedInformation, 'add_order_button_none', firstClickonButton, 'add_order_button_none');
     addAndRemoveClassHelperFunction(contentAddedDish, 'dish_order_buttons_none', contentPlusButton, 'add_order_button');
@@ -198,7 +191,6 @@ function addAndRemoveClassFull(orderIndex) {
     let addedInformation = document.getElementById(`added_information_${orderIndex}`);
     let contentPlusButton = document.getElementById(`plus_order_button_${orderIndex}`);
     let contentAddedDish = document.getElementById(`added_dish_button_and_amount${orderIndex}`);
-
     addAndRemoveClassHelperFunction(addedInformation, 'add_order_button_added', firstClickonButton, 'add_order_button');
     addAndRemoveClassHelperFunction(firstClickonButton, 'add_order_button_none', addedInformation, 'add_order_button_none');
     addAndRemoveClassHelperFunction(contentPlusButton, 'add_order_button', contentAddedDish, 'dish_order_buttons_none');
@@ -219,12 +211,10 @@ function resetAllDishButtons() {
         let addedInformation = document.getElementById(`added_information_${i}`);
         let contentPlusButton = document.getElementById(`plus_order_button_${i}`);
         let contentAddedDish = document.getElementById(`added_dish_button_and_amount${i}`);
-
         addAndRemoveClassHelperFunction(firstClickonButton, 'add_order_button', firstClickonButton, 'add_order_button_none');
         addAndRemoveClassHelperFunction(contentAddedDish, 'dish_order_buttons_none', contentAddedDish, 'dish_order_buttons');
         addAndRemoveClassHelperFunction(addedInformation, 'add_order_button_none', addedInformation, 'add_order_button_added');
         addAndRemoveClassHelperFunction(contentPlusButton, 'add_order_button_none', contentPlusButton, 'add_order_button');
-
         myDishes[i].amount = 0;
     }
 }
@@ -233,7 +223,6 @@ function addClassRubbish(orderIndex, condition) {
     let contentRubbishButton = document.getElementById(`rubbish_button_${orderIndex}`);
     let contentLessButton = document.getElementById(`less_button_${orderIndex}`);
     let contentRubbishButtonOnTop = document.getElementById(`rubbish_button_onTop_${orderIndex}`);
-
     if (condition == 0 && myDishes[orderIndex].amount == 1) {
         addAndRemoveClassHelperFunction(contentRubbishButton, 'dish_font_button', contentRubbishButton, 'dish_font_button_none');
         addAndRemoveClassHelperFunction(contentLessButton, 'dish_font_button_non', contentLessButton, 'dish_font_button');
@@ -250,7 +239,6 @@ function deliverySwitch() {
         contentDeliveryFee.innerText = "0,00€";
         switchCondition = 0;
     }
-
     calculateNewDishPrice();
 }
 
@@ -270,7 +258,6 @@ function openDialogOrder() {
 function closeDialogOrder() {
     let totalPrice = parseFloat(contentTableTotalPrice.innerText.replace(",", "."));
     totalPrice = 0;
-
     resetBasket();
     basketWithDishes();
     resetAllDishButtons();
@@ -284,7 +271,6 @@ function resetBasket() {
     let contentNumberTotalAmount = document.getElementById('number_total_amount_basket');
     let totalAmount = 0
     contentNumberTotalAmount.innerText = totalAmount;
-
     for (let index = 0; index < myDishes.length; index++) {
         let contentAddedDish = document.getElementById(`added_dish_content_${index}`);
         if (contentAddedDish) {
@@ -297,16 +283,17 @@ function resetBasket() {
 
 function openBasketResponsive() {
     contentBasket.classList.toggle('responsive_basket_none');
+    contentBody.classList.add('scroll_lock');
 }
 
 function closeBasketResponsive() {
     contentBasket.classList.add('responsive_basket_none');
+    contentBody.classList.remove('scroll_lock');
 }
 
 function addAndRemoveClassAmountNull() {
     let contentShoppiCartButton = document.getElementById('shopping_cart_button');
     let contentNumberTotalAmount = document.getElementById('number_total_amount_basket');
-
     addAndRemoveClassHelperFunction(contentShoppiCartButton, 'shopping_button_responsive', contentShoppiCartButton, 'shopping_button_responsive_count');
     addAndRemoveClassHelperFunction(contentNumberTotalAmount, 'total_amount_basket_none', contentNumberTotalAmount, 'total_amount_basket');
 }
@@ -314,7 +301,6 @@ function addAndRemoveClassAmountNull() {
 function addAndRemoveClassAmountBiggerNull() {
     let contentShoppiCartButton = document.getElementById('shopping_cart_button');
     let contentNumberTotalAmount = document.getElementById('number_total_amount_basket');
-
     addAndRemoveClassHelperFunction(contentShoppiCartButton, 'shopping_button_responsive_count', contentShoppiCartButton, 'shopping_button_responsive');
     addAndRemoveClassHelperFunction(contentNumberTotalAmount, 'total_amount_basket', contentNumberTotalAmount, 'total_amount_basket_none');
 }
@@ -322,7 +308,6 @@ function addAndRemoveClassAmountBiggerNull() {
 function classShoppingCartResponisveCount() {
     let contentNumberTotalAmount = document.getElementById('number_total_amount_basket');
     let totalAmount = contentNumberTotalAmount.innerText;
-
     if (totalAmount == 0) {
         addAndRemoveClassAmountNull()
     } else {
