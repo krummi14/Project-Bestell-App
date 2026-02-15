@@ -10,7 +10,7 @@ let contentTableTotalPrice = document.getElementById('total_table_price');
 let contentDeliveryFee = document.getElementById('delivery_fee');
 let contentBasketEmpty = document.getElementById('basket_empty');
 let contentBasketFull = document.getElementById('basket_full');
-let contentBody = document.body;
+let scrollPosition = 0;
 let newDishPrice = 0;
 let newTotalPrice = 0;
 let switchCondition = 0;
@@ -32,7 +32,7 @@ function addAndRemoveClassHelperFunction(contentAdd, idADD, contentRemove, idRem
 function renderAllDishes() {
     const categories = [
         [contentBurger, 0, 4],
-        [contentPizza, 4, 8],   
+        [contentPizza, 4, 8],
         [contentSalad, 8, myDishes.length]
     ];
 
@@ -290,12 +290,18 @@ function resetBasket() {
 
 function openBasketResponsive() {
     contentBasket.classList.toggle('responsive_basket_none');
-    contentBody.classList.add('scroll_lock');
+    scrollPosition = window.scrollY;                 
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.classList.add('scroll_lock');
 }
 
 function closeBasketResponsive() {
     contentBasket.classList.add('responsive_basket_none');
-    contentBody.classList.remove('scroll_lock');
+    document.body.style.top = '';
+    document.body.classList.remove('scroll_lock');
+        requestAnimationFrame(() => {
+        window.scrollTo(0, scrollPosition);
+    });
 }
 
 function addAndRemoveClassAmountNull() {

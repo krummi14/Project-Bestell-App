@@ -51,14 +51,32 @@ h4 {
     font-weight: 600;
 }
 
-@media(min-width: 320px) and (max-width: 1200px) {
+@media (min-width: 0px) and (max-width: 1325px) {
     .scroll_lock {
-        overflow: hidden;
-        height: 100%;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
     }
-    
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 32px;
+    margin-left: 0;
+}
+
+h4 {
+    line-height: 1;
+}
+
+@media(min-width: 0px) and (max-width: 319px) {
     h1 {
-        font-size: 40px;
+        font-size: 24px;
     }
 
     h2 {
